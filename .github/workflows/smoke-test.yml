@@ -1,0 +1,43 @@
+name: Smoke test (converter only)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-converter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Build synthetic input zip
+        run: python scripts/make_example_zip.py examples/example_input.zip
+
+      - name: Convert
+        run: |
+          python scripts/convert_to_ms.py \
+            --zip examples/example_input.zip \
+            --out work --require-ms2
+
+      - name: Check output
+        run: |
+          N=$(ls work/ms_files/*.ms | wc -l)
+          echo "produced $N .ms files"
+          test "$N" -ge 7
+          grep -q ">parentmass" work/ms_files/*.ms
+          grep -q ">collision" work/ms_files/*.ms
+          echo '--- sample ---'
+          cat "$(ls work/ms_files/*.ms | head -n1)"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smoke-ms-files
+          path: work/**

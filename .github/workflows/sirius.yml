@@ -1,0 +1,143 @@
+name: SIRIUS pipeline
+
+on:
+  # 1) drop a .zip into data/ and push -> pipeline runs
+  push:
+    paths:
+      - "data/**.zip"
+      - "scripts/**"
+      - ".github/workflows/sirius.yml"
+  # 2) or start it by hand from the Actions tab
+  workflow_dispatch:
+    inputs:
+      input_zip:
+        description: "Path to the input zip inside the repo"
+        default: "data/input.zip"
+        required: true
+      adduct:
+        description: "Default adduct"
+        default: "[M+H]+"
+      polarity:
+        description: "positive or negative"
+        default: "positive"
+      instrument:
+        description: "orbitrap or qtof"
+        default: "orbitrap"
+      ppm_max:
+        description: "Mass accuracy (ppm)"
+        default: "10"
+      tools:
+        description: "SIRIUS subcommands"
+        default: "formula fingerprint structure canopus"
+      max_compounds:
+        description: "Limit number of compounds (0 = all)"
+        default: "0"
+
+concurrency:
+  group: sirius-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  convert:
+    name: 1 - Convert CSV/H5 to .ms
+    runs-on: ubuntu-latest
+    outputs:
+      n_written: ${{ steps.convert.outputs.n_written }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install python deps
+        run: pip install -r requirements.txt
+
+      - name: Pick input zip
+        id: pick
+        shell: bash
+        run: |
+          ZIP="${{ github.event.inputs.input_zip }}"
+          if [ -z "$ZIP" ] || [ ! -f "$ZIP" ]; then
+            ZIP=$(ls -S data/*.zip 2>/dev/null | head -n1 || true)
+          fi
+          if [ -z "$ZIP" ]; then
+            echo "::error::No zip found. Put your archive in data/ or pass input_zip."
+            exit 1
+          fi
+          echo "zip=$ZIP" >> "$GITHUB_OUTPUT"
+          echo "Using $ZIP"
+
+      - name: Convert to SIRIUS .ms
+        id: convert
+        shell: bash
+        run: |
+          python scripts/convert_to_ms.py \
+            --zip "${{ steps.pick.outputs.zip }}" \
+            --out work \
+            --adduct "${{ github.event.inputs.adduct || '[M+H]+' }}" \
+            --polarity "${{ github.event.inputs.polarity || 'positive' }}" \
+            --instrument "${{ github.event.inputs.instrument || 'orbitrap' }}" \
+            --max-compounds "${{ github.event.inputs.max_compounds || '0' }}"
+          N=$(ls work/ms_files/*.ms | wc -l)
+          echo "n_written=$N" >> "$GITHUB_OUTPUT"
+          echo "### Converted $N compounds to .ms" >> "$GITHUB_STEP_SUMMARY"
+          head -n 25 work/ms_files/$(ls work/ms_files | head -n1) >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload .ms files
+        uses: actions/upload-artifact@v4
+        with:
+          name: ms-files
+          path: |
+            work/ms_files/**
+            work/manifest.csv
+            work/conversion_report.txt
+            work/conversion_summary.json
+          retention-days: 14
+
+  sirius:
+    name: 2 - Run SIRIUS (rusirius image)
+    needs: convert
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download .ms files
+        uses: actions/download-artifact@v4
+        with:
+          name: ms-files
+          path: work
+
+      - name: Free up disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android || true
+          df -h /
+
+      - name: Run SIRIUS
+        env:
+          IMAGE: rformassspectrometry/rusirius
+          SIRIUS_USER: ${{ secrets.SIRIUS_USER }}
+          SIRIUS_PASSWORD: ${{ secrets.SIRIUS_PASSWORD }}
+          SIRIUS_TOOLS: ${{ github.event.inputs.tools || 'formula fingerprint structure canopus' }}
+          PPM_MAX: ${{ github.event.inputs.ppm_max || '10' }}
+          INSTRUMENT: ${{ github.event.inputs.instrument || 'orbitrap' }}
+          ADDUCTS: ${{ github.event.inputs.adduct || '[M+H]+' }}
+        run: |
+          chmod +x scripts/run_sirius.sh
+          ./scripts/run_sirius.sh work/ms_files work/project
+
+      - name: Summarise
+        if: always()
+        run: |
+          echo "## SIRIUS results" >> "$GITHUB_STEP_SUMMARY"
+          find work/project -maxdepth 2 -name "*.tsv" | head -n 20 >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Upload SIRIUS project + summaries
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sirius-results
+          path: work/project/**
+          retention-days: 30

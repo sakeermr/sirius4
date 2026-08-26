@@ -1,0 +1,16 @@
+# Optional: extra column-name spellings for your own files.
+# The converter already knows the common ones; add here only if a column
+# of yours is not being recognised (check work/conversion_report.txt).
+feature_id:
+  - FeatureID
+  - feature_index
+mz:
+  - mzmed
+intensity:
+  - into
+rt:
+  - rtmed
+precursor_mz:
+  - premz_corrected
+collision_energy:
+  - CE_eV

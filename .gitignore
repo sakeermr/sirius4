@@ -1,0 +1,9 @@
+work/
+*.ms
+!examples/*.ms
+.sirius/
+__pycache__/
+*.pyc
+.DS_Store
+data/*.zip
+!data/.gitkeep
