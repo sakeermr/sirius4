@@ -138,7 +138,14 @@ def read_h5(path: Path) -> list[pd.DataFrame]:
                 if isinstance(obj, pd.Series):
                     obj = obj.to_frame()
                 if isinstance(obj, pd.DataFrame) and len(obj):
-                    obj = obj.reset_index()
+                    # only promote the index to a column when it carries
+                    # information - a plain RangeIndex would otherwise add a
+                    # meaningless "index" column that can shadow real ones
+                    idx = obj.index
+                    if idx.name is not None or isinstance(idx, pd.MultiIndex) or not isinstance(idx, pd.RangeIndex):
+                        obj = obj.reset_index()
+                    else:
+                        obj = obj.reset_index(drop=True)
                     obj.attrs["h5_key"] = key
                     frames.append(obj)
         if frames:
@@ -206,15 +213,36 @@ def canonicalise(df: pd.DataFrame, extra_aliases: dict | None = None) -> pd.Data
         for n in names:
             lookup.setdefault(_norm(n), canon)
 
+    canon_names = set(aliases)
     rename: dict[str, str] = {}
     used: set[str] = set()
+
+    # pass 1 - a column that already *is* a canonical name always wins, so a
+    # weak alias (e.g. "index" -> feature_id) can never shadow the real column
     for col in df.columns:
+        n = _norm(col)
+        for canon in canon_names:
+            if n == _norm(canon):
+                rename[col] = canon
+                used.add(canon)
+                break
+
+    # pass 2 - map the remaining columns through the alias table
+    for col in df.columns:
+        if col in rename:
+            continue
         canon = lookup.get(_norm(col))
         if canon and canon not in used:
             rename[col] = canon
             used.add(canon)
+
     out = df.rename(columns=rename).copy()
     out.columns = [str(c) for c in out.columns]
+    # belt and braces: drop any duplicate column names, keeping the first
+    if out.columns.duplicated().any():
+        dupes = out.columns[out.columns.duplicated()].unique().tolist()
+        log(f"[warn] duplicate columns after normalisation {dupes} - keeping the first of each")
+        out = out.loc[:, ~out.columns.duplicated()]
     return out
 
 
