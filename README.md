@@ -204,6 +204,12 @@ Spectra without a collision energy are written under `>ms2peaks`.
 
 ## Notes and gotchas
 
+* **SIRIUS 5 vs 6 subcommand names.** The tool chain (`formula fingerprint
+  structure canopus`) uses SIRIUS 5 names. SIRIUS 6 renamed several of them, so
+  `run_sirius.sh` reads the image's own `--help`, remaps each requested tool to
+  the name that build actually knows, and skips any that do not exist - logging
+  every substitution. The resolved chain is printed as
+  `==> resolved tool chain: ...` before the run.
 * **The sirius binary path.** `run_sirius.sh` auto-discovers the executable inside the image
   (`command -v sirius`, then a `find` under `/opt`, `/usr/local`, …). If the image lays it out
   unusually, set `SIRIUS_BIN` explicitly:

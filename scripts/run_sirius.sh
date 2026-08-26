@@ -5,11 +5,15 @@
 #
 #   ./scripts/run_sirius.sh work/ms_files work/project
 #
+# Subcommand names differ between SIRIUS 5 and 6 (e.g. 'structure' does not
+# exist in 6.3), so the requested tool chain is validated against the image's
+# own --help output before running, and unknown names are remapped or dropped.
+#
 # Environment variables
 #   IMAGE            docker image                (default rformassspectrometry/rusirius)
 #   SIRIUS_TOOLS     tool chain                  (default "formula fingerprint structure canopus")
 #   SIRIUS_ARGS      extra global sirius flags   (default "--maxmz 800")
-#   PPM_MAX          MS1 mass accuracy in ppm    (default 10)
+#   PPM_MAX          mass accuracy in ppm        (default 10)
 #   INSTRUMENT       orbitrap | qtof             (default orbitrap)
 #   ADDUCTS          e.g. "[M+H]+,[M+Na]+"       (default [M+H]+)
 #   SIRIUS_USER /
@@ -37,7 +41,6 @@ mkdir -p "$PROJECT"
 echo "==> pulling $IMAGE"
 docker pull "$IMAGE"
 
-# --- locate the sirius executable inside the image ------------------------
 echo "==> locating sirius binary"
 SIRIUS_BIN="${SIRIUS_BIN:-$(docker run --rm --entrypoint /bin/sh "$IMAGE" -c '
   command -v sirius 2>/dev/null && exit 0
@@ -48,9 +51,7 @@ SIRIUS_BIN="${SIRIUS_BIN:-$(docker run --rm --entrypoint /bin/sh "$IMAGE" -c '
   echo ""' | tr -d "\r" | tail -n1)}"
 
 if [ -z "$SIRIUS_BIN" ]; then
-  echo "::error::could not find a sirius executable inside $IMAGE."
-  echo "Inspect the image and set SIRIUS_BIN, e.g.:"
-  echo "  docker run --rm -it --entrypoint /bin/bash $IMAGE"
+  echo "::error::could not find a sirius executable inside $IMAGE. Set SIRIUS_BIN."
   exit 2
 fi
 echo "    sirius binary: $SIRIUS_BIN"
@@ -59,57 +60,107 @@ DOCKER_ENV=()
 [ -n "${SIRIUS_USER:-}" ]     && DOCKER_ENV+=(-e "SIRIUS_USER=${SIRIUS_USER}")
 [ -n "${SIRIUS_PASSWORD:-}" ] && DOCKER_ENV+=(-e "SIRIUS_PASSWORD=${SIRIUS_PASSWORD}")
 
-echo "==> SIRIUS self-report (version + top-level usage)"
-docker run --rm --entrypoint /bin/bash "$IMAGE" -lc "
-  '$SIRIUS_BIN' --version 2>&1 | head -n 20
-  echo '--- top-level commands ---'
-  '$SIRIUS_BIN' --help 2>&1 | head -n 60
-" || echo "::warning::could not query the sirius binary"
-
 echo "==> running SIRIUS on $(ls "$MS_DIR"/*.ms | wc -l) .ms file(s)"
+
+# the inner script is written to a file to keep the quoting sane
+cat > /tmp/_sirius_inner.sh <<'INNER'
+set -uo pipefail
+SIR="$SIRIUS_BIN_IN"
+
+"$SIR" --version 2>&1 | grep -iE "^SIRIUS|lib:" || true
+
+echo "==> available subcommands in this SIRIUS build"
+HELP="$("$SIR" --help 2>&1 || true)"
+echo "$HELP" | sed -n '/[Cc]ommands:/,$p' | head -n 45
+
+have() { echo "$HELP" | grep -qE "^[[:space:]]*$1([[:space:],]|$)"; }
+
+# map each requested tool onto a name this build actually knows
+resolve() {
+  case "$1" in
+    formula)      cands="formula formulas sirius" ;;
+    zodiac)       cands="zodiac" ;;
+    fingerprint)  cands="fingerprint fingerprints fingerprint-search" ;;
+    structure)    cands="structure structures structure-db-search structuredb" ;;
+    canopus)      cands="canopus compound-classes compound-class" ;;
+    *)            cands="$1" ;;
+  esac
+  for c in $cands; do
+    if have "$c"; then echo "$c"; return 0; fi
+  done
+  return 1
+}
+
+TOOLS=""
+for t in $SIRIUS_TOOLS_IN; do
+  if pick="$(resolve "$t")"; then
+    TOOLS="$TOOLS $pick"
+    [ "$pick" != "$t" ] && echo "::warning::'$t' is not a subcommand here - using '$pick' instead"
+  else
+    echo "::warning::subcommand '$t' does not exist in this SIRIUS build - skipping it"
+  fi
+done
+TOOLS="$(echo "$TOOLS" | xargs || true)"
+[ -z "$TOOLS" ] && TOOLS="formula"
+echo "==> resolved tool chain: $TOOLS"
+
+SUMMARY=""
+if have "write-summaries"; then
+  SUMMARY="write-summaries"
+elif have "write-summary"; then
+  SUMMARY="write-summary"
+else
+  echo "::warning::no write-summaries subcommand - the project will still contain results"
+fi
+
+if [ -n "${SIRIUS_USER:-}" ] && [ -n "${SIRIUS_PASSWORD:-}" ]; then
+  echo "==> sirius login"
+  "$SIR" login --user-env=SIRIUS_USER --password-env=SIRIUS_PASSWORD \
+    || "$SIR" login -u "$SIRIUS_USER" -p "$SIRIUS_PASSWORD" \
+    || echo "::warning::sirius login failed - only offline tools will work"
+else
+  echo "::warning::SIRIUS_USER and/or SIRIUS_PASSWORD not set - fingerprint/structure/canopus need BOTH"
+fi
+
+set -x
+"$SIR" $SIRIUS_ARGS_IN \
+  --input "$MS_DIR_IN" \
+  --project "$PROJECT_IN" \
+  config --IsotopeSettings.filter=true \
+         --FormulaSearchDB=none \
+         --StructureSearchDB=BIO \
+         --MS1MassDeviation.allowedMassDeviation=${PPM_MAX_IN}ppm \
+         --MS2MassDeviation.allowedMassDeviation=${PPM_MAX_IN}ppm \
+         --AdductSettings.enforced="$ADDUCTS_IN" \
+         --AlgorithmProfile=$INSTRUMENT_IN \
+  $TOOLS $SUMMARY
+RC=$?
+set +x
+echo "==> sirius exit code: $RC"
+exit $RC
+INNER
+
 docker run --rm \
   -v "$PWD:/work" -w /work \
+  -v /tmp/_sirius_inner.sh:/tmp/inner.sh:ro \
   "${DOCKER_ENV[@]}" \
-  --entrypoint /bin/bash "$IMAGE" -lc "
-    set -euo pipefail
-    SIR='$SIRIUS_BIN'
-    \$SIR --version || true
+  -e "SIRIUS_BIN_IN=$SIRIUS_BIN" \
+  -e "SIRIUS_TOOLS_IN=$SIRIUS_TOOLS" \
+  -e "SIRIUS_ARGS_IN=$SIRIUS_ARGS" \
+  -e "MS_DIR_IN=$MS_DIR" \
+  -e "PROJECT_IN=$PROJECT" \
+  -e "PPM_MAX_IN=$PPM_MAX" \
+  -e "INSTRUMENT_IN=$INSTRUMENT" \
+  -e "ADDUCTS_IN=$ADDUCTS" \
+  --entrypoint /bin/bash "$IMAGE" /tmp/inner.sh
 
-    # CSI:FingerID / CANOPUS need an account (SIRIUS >= 5.8)
-    if [ -n \"\${SIRIUS_USER:-}\" ] && [ -n \"\${SIRIUS_PASSWORD:-}\" ]; then
-      echo '==> sirius login'
-      \$SIR login --user-env=SIRIUS_USER --password-env=SIRIUS_PASSWORD || \
-      \$SIR login -u \"\$SIRIUS_USER\" -p \"\$SIRIUS_PASSWORD\" || \
-        echo '::warning::sirius login failed - continuing (formula step still works)'
-    else
-      echo '::warning::no SIRIUS_USER/SIRIUS_PASSWORD secret - webservice tools may fail'
-    fi
-
-    \$SIR $SIRIUS_ARGS \
-      --input '$MS_DIR' \
-      --project '$PROJECT' \
-      config --IsotopeSettings.filter=true \
-             --FormulaSearchDB=none \
-             --StructureSearchDB=BIO \
-             --MS1MassDeviation.allowedMassDeviation=${PPM_MAX}ppm \
-             --MS2MassDeviation.allowedMassDeviation=${PPM_MAX}ppm \
-             --AdductSettings.enforced='$ADDUCTS' \
-             --AlgorithmProfile=$INSTRUMENT \
-      $SIRIUS_TOOLS \
-      write-summaries --output '$PROJECT/summaries'
-  "
-
-# SIRIUS can print usage and exit 0 when the argument syntax does not match
-# the version inside the image - so never trust the exit code alone.
 echo "==> verifying SIRIUS actually wrote a project"
 if [ -z "$(ls -A "$PROJECT" 2>/dev/null)" ]; then
-  echo "::error::SIRIUS exited 0 but '$PROJECT' is empty - no results were produced."
-  echo "This almost always means the CLI syntax does not match the SIRIUS version"
-  echo "in this image. Check the '--- top-level commands ---' output above and"
-  echo "adjust SIRIUS_ARGS / SIRIUS_TOOLS in scripts/run_sirius.sh accordingly."
+  echo "::error::SIRIUS finished but '$PROJECT' is empty - no results were produced."
+  echo "Check the 'available subcommands' list above and adjust SIRIUS_TOOLS."
   exit 3
 fi
 
 N_SUM=$(find "$PROJECT" -name "*.tsv" 2>/dev/null | wc -l)
 echo "==> SIRIUS finished. Project: $PROJECT ($N_SUM summary tables)"
-ls -R "$PROJECT" | head -n 50
+ls -R "$PROJECT" | head -n 40
