@@ -1,0 +1,1016 @@
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	﻿2026-08-26T02:49:44.7845673Z Current runner version: '2.336.0'
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7866513Z ##[group]Runner Image Provisioner
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7867335Z Hosted Compute Agent
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7867909Z Version: 20260819.586
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7868501Z Commit: 3cc4a88dfa507ef76119ad1bb3eccc6378bb2b76
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7869191Z Build Date: 2026-08-18T23:20:18Z
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7869876Z Worker ID: {95a6a678-53a4-4477-97e6-50d6e1503a40}
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7870530Z Azure Region: westus3
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7871348Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7872627Z ##[group]Operating System
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7873249Z Ubuntu
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7873773Z 24.04.4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7874246Z LTS
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7874705Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7875247Z ##[group]Runner Image
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7875852Z Image: ubuntu-24.04
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7876388Z Version: 20260823.283.1
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7877518Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260823.283/images/ubuntu/Ubuntu2404-Readme.md
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7878902Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260823.283
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7879791Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7880995Z ##[group]GITHUB_TOKEN Permissions
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7883281Z Contents: read
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7883866Z Metadata: read
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7884380Z Packages: read
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7884956Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7886783Z Secret source: Actions
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.7887706Z Prepare workflow directory
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.8190175Z Prepare all required actions
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:44.8252486Z Getting action download info
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.0994751Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.3785472Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.5833251Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.7666323Z Complete job name: 1 - Convert CSV/H5 to .ms
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8325147Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8332963Z ##[group]Run actions/checkout@v4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8333829Z with:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8334346Z   repository: sakeermr/sirius4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8338377Z   token: ***
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8338866Z   ssh-strict: true
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8339346Z   ssh-user: git
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8339939Z   persist-credentials: true
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8340488Z   clean: true
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8341236Z   sparse-checkout-cone-mode: true
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8341818Z   fetch-depth: 1
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8342297Z   fetch-tags: false
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8342858Z   show-progress: true
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8343392Z   lfs: false
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8343961Z   submodules: false
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8344477Z   set-safe-directory: true
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8345030Z   allow-unsafe-pr-checkout: false
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.8345782Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.9241333Z Syncing repository: sakeermr/sirius4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.9244116Z ##[group]Getting Git version info
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.9245220Z Working directory is '/home/runner/work/sirius4/sirius4'
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:45.9246930Z [command]/usr/bin/git version
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1162279Z git version 2.55.0
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1184395Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1205094Z Temporarily overriding HOME='/home/runner/work/_temp/4922c9a0-f625-4284-820d-2c48c8c93a9d' before making global git config changes
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1207122Z Adding repository directory to the temporary git global config as a safe directory
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1209080Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sirius4/sirius4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1255226Z Deleting the contents of '/home/runner/work/sirius4/sirius4'
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1258844Z ##[group]Initializing the repository
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1263246Z [command]/usr/bin/git init /home/runner/work/sirius4/sirius4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1360501Z hint: Using 'master' as the name for the initial branch. This default branch name
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1362521Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1364221Z hint: to use in all of your new repositories, which will suppress this warning,
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1365611Z hint: call:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1366406Z hint:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1367471Z hint: 	git config --global init.defaultBranch <name>
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1368592Z hint:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1369624Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1371480Z hint: 'development'. The just-created branch can be renamed via this command:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1372845Z hint:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1373789Z hint: 	git branch -m <name>
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1374684Z hint:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1375757Z hint: Disable this message with "git config set advice.defaultBranchName false"
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1377393Z Initialized empty Git repository in /home/runner/work/sirius4/sirius4/.git/
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1380510Z [command]/usr/bin/git remote add origin https://github.com/sakeermr/sirius4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1445941Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1447555Z ##[group]Disabling automatic garbage collection
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1449495Z [command]/usr/bin/git config --local gc.auto 0
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1474241Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1475615Z ##[group]Setting up auth
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1480608Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1507595Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1792141Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1822533Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.1978853Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.2004161Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.2162148Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.2188177Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.2189206Z ##[group]Fetching the repository
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.2196639Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +940dcc43c3784b08bb17051ffe66cacbd34f2db4:refs/remotes/origin/main
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7152365Z From https://github.com/sakeermr/sirius4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7155134Z  * [new ref]         940dcc43c3784b08bb17051ffe66cacbd34f2db4 -> origin/main
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7159076Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7160619Z ##[group]Determining the checkout info
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7162775Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7164009Z [command]/usr/bin/git sparse-checkout disable
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7203998Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7227123Z ##[group]Checking out the ref
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7230440Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7276060Z Switched to a new branch 'main'
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7280336Z branch 'main' set up to track 'origin/main'.
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7294925Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7326716Z [command]/usr/bin/git log -1 --format=%H
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7344547Z 940dcc43c3784b08bb17051ffe66cacbd34f2db4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7700148Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7705801Z ##[group]Run actions/setup-python@v5
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7707070Z with:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7708062Z   python-version: 3.11
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7709135Z   cache: pip
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7710167Z   check-latest: false
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7720541Z   token: ***
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7721755Z   update-environment: true
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7722913Z   allow-prereleases: false
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7724052Z   freethreaded: false
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.7725111Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.8933576Z ##[group]Installed versions
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.9013171Z (node:2010) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.9016091Z (Use `node --trace-deprecation ...` to show where the warning was created)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.9018887Z Successfully set up CPython (3.11.16)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.9021307Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:46.9419679Z [command]/opt/hostedtoolcache/Python/3.11.16/x64/bin/pip cache dir
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:49.6454101Z /home/runner/.cache/pip
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:49.8783907Z Cache hit for: setup-python-Linux-x64-24.04-Ubuntu-python-3.11.16-pip-f7d454c7774915e9fe94ce9814752bec2882a1e82e3c91f47a5e7540c92ccaee
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:49.8876844Z (node:2010) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.1308657Z Received 33554432 of 55926851 (60.0%), 32.0 MBs/sec
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.3268496Z Received 55926851 of 55926851 (100.0%), 44.6 MBs/sec
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.3269436Z Cache Size: ~53 MB (55926851 B)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.3388779Z [command]/usr/bin/tar -xf /home/runner/work/_temp/f40aed84-2f7e-42a0-ad9a-e8517f36ada5/cache.tzst -P -C /home/runner/work/sirius4/sirius4 --use-compress-program unzstd
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4048162Z Cache restored successfully
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4072982Z Cache restored from key: setup-python-Linux-x64-24.04-Ubuntu-python-3.11.16-pip-f7d454c7774915e9fe94ce9814752bec2882a1e82e3c91f47a5e7540c92ccaee
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4199812Z ##[group]Run pip install -r requirements.txt
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4200305Z ^[[36;1mpip install -r requirements.txt^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4232543Z shell: /usr/bin/bash -e {0}
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4233035Z env:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4233408Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4233963Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4234516Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4234947Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4235443Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4235878Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:51.4236337Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.2723440Z Collecting pandas>=2.0 (from -r requirements.txt (line 1))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.2736956Z   Using cached pandas-3.0.5-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.4222771Z Collecting numpy>=1.24 (from -r requirements.txt (line 2))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.4237067Z   Using cached numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.4578430Z Collecting h5py>=3.8 (from -r requirements.txt (line 3))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.4589968Z   Using cached h5py-3.16.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.4829691Z Collecting tables>=3.8 (from -r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.4843273Z   Using cached tables-3.11.1-cp311-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.5011396Z Collecting python-dateutil>=2.8.2 (from pandas>=2.0->-r requirements.txt (line 1))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.5024169Z   Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.5563481Z Collecting numexpr>=2.6.2 (from tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.5574328Z   Using cached numexpr-2.14.2-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.0 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.5741741Z Collecting packaging (from tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.5752820Z   Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.5896036Z Collecting py-cpuinfo (from tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.5907209Z   Using cached py_cpuinfo-9.0.0-py3-none-any.whl.metadata (794 bytes)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.6896533Z Collecting blosc2>=2.3.0 (from tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.6909011Z   Using cached blosc2-4.11.0-cp311-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (7.8 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.7130567Z Collecting ndindex (from blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.7141805Z   Using cached ndindex-1.10.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.6 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.7654070Z Collecting msgpack (from blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.7671468Z   Using cached msgpack-1.2.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.8420839Z Collecting pydantic (from blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.8430237Z   Using cached pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.8648836Z Collecting httpx[http2] (from blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.8671850Z   Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.8961470Z Collecting rich (from blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.8973277Z   Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9129779Z Collecting threadpoolctl (from blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9141853Z   Using cached threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9300849Z Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas>=2.0->-r requirements.txt (line 1))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9312025Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9499185Z Collecting anyio (from httpx[http2]->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9509898Z   Using cached anyio-4.14.2-py3-none-any.whl.metadata (4.6 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9701566Z Collecting certifi (from httpx[http2]->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9713022Z   Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9887197Z Collecting httpcore==1.* (from httpx[http2]->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:54.9898043Z   Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0063451Z Collecting idna (from httpx[http2]->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0076499Z   Using cached idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0260062Z Collecting h2<5,>=3 (from httpx[http2]->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0271324Z   Using cached h2-4.4.1-py3-none-any.whl.metadata (3.8 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0419862Z Collecting hyperframe<7,>=6.1 (from h2<5,>=3->httpx[http2]->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0430512Z   Using cached hyperframe-6.1.0-py3-none-any.whl.metadata (4.3 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0574418Z Collecting hpack<5,>=4.2 (from h2<5,>=3->httpx[http2]->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0589107Z   Using cached hpack-4.2.0-py3-none-any.whl.metadata (3.3 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0732335Z Collecting h11>=0.16 (from httpcore==1.*->httpx[http2]->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0743888Z   Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0933630Z Collecting typing_extensions>=4.5 (from anyio->httpx[http2]->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.0944423Z   Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.1103753Z Collecting annotated-types>=0.6.0 (from pydantic->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.1115419Z   Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.5866334Z Collecting pydantic-core==2.46.4 (from pydantic->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.5879578Z   Using cached pydantic_core-2.46.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6029622Z Collecting typing-inspection>=0.4.2 (from pydantic->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6042748Z   Using cached typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6221574Z Collecting markdown-it-py>=2.2.0 (from rich->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6233324Z   Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6442607Z Collecting pygments<3.0.0,>=2.13.0 (from rich->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6455584Z   Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6600248Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->blosc2>=2.3.0->tables>=3.8->-r requirements.txt (line 4))
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6612062Z   Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6644896Z Using cached pandas-3.0.5-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (11.3 MB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6696158Z Using cached numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6767803Z Using cached h5py-3.16.0-cp311-cp311-manylinux_2_28_x86_64.whl (5.0 MB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6798293Z Using cached tables-3.11.1-cp311-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (7.2 MB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6834240Z Using cached blosc2-4.11.0-cp311-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.5 MB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6869057Z Using cached numexpr-2.14.2-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (443 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6883353Z Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6896778Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6909077Z Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6921684Z Using cached h2-4.4.1-py3-none-any.whl (62 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6933701Z Using cached hpack-4.2.0-py3-none-any.whl (34 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6945179Z Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6956846Z Using cached hyperframe-6.1.0-py3-none-any.whl (13 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6968252Z Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6979972Z Using cached anyio-4.14.2-py3-none-any.whl (125 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.6992443Z Using cached idna-3.19-py3-none-any.whl (68 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7004015Z Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7016128Z Using cached certifi-2026.7.22-py3-none-any.whl (136 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7028134Z Using cached msgpack-1.2.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (423 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7041944Z Using cached ndindex-1.10.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (516 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7055881Z Using cached packaging-26.3-py3-none-any.whl (129 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7067884Z Using cached py_cpuinfo-9.0.0-py3-none-any.whl (22 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7079523Z Using cached pydantic-2.13.4-py3-none-any.whl (472 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7093315Z Using cached pydantic_core-2.46.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7111992Z Using cached annotated_types-0.8.0-py3-none-any.whl (13 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7123137Z Using cached typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7134280Z Using cached rich-15.0.0-py3-none-any.whl (310 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7147414Z Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7164657Z Using cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7176160Z Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.7186640Z Using cached threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:49:55.9861479Z Installing collected packages: py-cpuinfo, typing_extensions, threadpoolctl, six, pygments, packaging, numpy, ndindex, msgpack, mdurl, idna, hyperframe, hpack, h11, certifi, annotated-types, typing-inspection, python-dateutil, pydantic-core, numexpr, markdown-it-py, httpcore, h5py, h2, anyio, rich, pydantic, pandas, httpx, blosc2, tables
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.5540441Z 
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.5556850Z Successfully installed annotated-types-0.8.0 anyio-4.14.2 blosc2-4.11.0 certifi-2026.7.22 h11-0.16.0 h2-4.4.1 h5py-3.16.0 hpack-4.2.0 httpcore-1.0.9 httpx-0.28.1 hyperframe-6.1.0 idna-3.19 markdown-it-py-4.2.0 mdurl-0.1.2 msgpack-1.2.1 ndindex-1.10.1 numexpr-2.14.2 numpy-2.4.6 packaging-26.3 pandas-3.0.5 py-cpuinfo-9.0.0 pydantic-2.13.4 pydantic-core-2.46.4 pygments-2.21.0 python-dateutil-2.9.0.post0 rich-15.0.0 six-1.17.0 tables-3.11.1 threadpoolctl-3.6.0 typing-inspection-0.4.4 typing_extensions-4.16.0
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6546481Z ##[group]Run ZIP="data/input.zip"
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6546886Z ^[[36;1mZIP="data/input.zip"^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6547309Z ^[[36;1mif [ -z "$ZIP" ] || [ ! -f "$ZIP" ]; then^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6547720Z ^[[36;1m  ZIP=$(ls -S data/*.zip 2>/dev/null | head -n1 || true)^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6548090Z ^[[36;1mfi^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6548478Z ^[[36;1m# files >100 MB cannot live in a git repo - fall back to a Release asset^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6548925Z ^[[36;1mif [ -z "$ZIP" ]; then^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6549506Z ^[[36;1m  TAG="data"^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6549874Z ^[[36;1m  echo "No zip in the repo, trying release '$TAG'..."^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6550294Z ^[[36;1m  mkdir -p data^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6550864Z ^[[36;1m  if gh release download "$TAG" --dir data --clobber 2>/dev/null; then^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6551349Z ^[[36;1m    ZIP=$(ls -S data/*.zip 2>/dev/null | head -n1 || true)^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6551781Z ^[[36;1m    echo "Downloaded $ZIP from release $TAG"^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6552215Z ^[[36;1m  fi^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6552518Z ^[[36;1mfi^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6552765Z ^[[36;1mif [ -z "$ZIP" ]; then^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6553212Z ^[[36;1m  echo "::error::No zip found. Commit one to data/, or upload it as an asset on a release tagged 'data'."^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6553695Z ^[[36;1m  exit 1^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6553955Z ^[[36;1mfi^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6554227Z ^[[36;1mls -lh "$ZIP"^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6554524Z ^[[36;1mecho "zip=$ZIP" >> "$GITHUB_OUTPUT"^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6577987Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6578388Z env:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6578722Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6579188Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6579670Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6580082Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6580488Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6581229Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6583581Z   GH_TOKEN: ***
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6583930Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:03.6640145Z No zip in the repo, trying release 'data'...
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6858216Z Downloaded data/deimos-results.zip from release data
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6867068Z -rw-r--r-- 1 runner runner 109M Aug 26 02:50 data/deimos-results.zip
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6926655Z ##[group]Run python scripts/convert_to_ms.py \
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6927121Z ^[[36;1mpython scripts/convert_to_ms.py \^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6927484Z ^[[36;1m  --zip "data/deimos-results.zip" \^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6927814Z ^[[36;1m  --out work \^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6928168Z ^[[36;1m  --adduct "[M+H]+" \^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6928459Z ^[[36;1m  --polarity "positive" \^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6928806Z ^[[36;1m  --instrument "orbitrap" \^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6929126Z ^[[36;1m  --max-compounds "20" \^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6929500Z ^[[36;1m  --prefer-format "h5" \^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6929821Z ^[[36;1m  --iso-rt-tol "0.05" \^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6930110Z ^[[36;1m  --require-ms2^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6930441Z ^[[36;1mN=$(ls work/ms_files/*.ms | wc -l)^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6931071Z ^[[36;1mecho "n_written=$N" >> "$GITHUB_OUTPUT"^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6931533Z ^[[36;1mecho "### Converted $N compounds to .ms" >> "$GITHUB_STEP_SUMMARY"^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6932131Z ^[[36;1mhead -n 25 work/ms_files/$(ls work/ms_files | head -n1) >> "$GITHUB_STEP_SUMMARY"^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6953884Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6954375Z env:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6954709Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6955158Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6955665Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6956078Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6956531Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6956940Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:06.6957336Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.3905999Z [unzip] extracted deimos-results.zip -> work/extracted
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.3913309Z [scan] '20260401_cbnv_standard_02 (2)_ms1_peaks' exists in several formats -> using 20260401_CBNV_standard_02 (2)_ms1_peaks.h5, ignoring ['20260401_CBNV_standard_02 (2)_ms1_peaks.csv']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.3915074Z [scan] '20260401_cbnv_standard_02 (2)_ms2_extracted' exists in several formats -> using 20260401_CBNV_standard_02 (2)_ms2_extracted.h5, ignoring ['20260401_CBNV_standard_02 (2)_ms2_extracted.csv']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.3916407Z [scan] MS1 files (1): ['20260401_CBNV_standard_02 (2)_ms1_peaks.h5']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.3917109Z [scan] MS2 files (1): ['20260401_CBNV_standard_02 (2)_ms2_extracted.h5']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.5603463Z [read] 20260401_CBNV_standard_02 (2)_ms1_peaks.h5: 1 pandas/HDF5 table(s)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.7265295Z [read] 20260401_CBNV_standard_02 (2)_ms2_extracted.h5: 1 pandas/HDF5 table(s)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.7266602Z [cols] ['index', 'controllerType', 'controllerNumber', 'scan', 'retention_time', 'mz', 'intensity', 'persistence', 'mz_weighted', 'retention_time_weighted']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.7267989Z [cols] ['index', 'index_ms1', 'mz_ms1', 'retention_time_ms1', 'intensity_ms1', 'persistence_ms1', 'index_ms2', 'mz_ms2', 'retention_time_ms2', 'intensity_ms2', 'persistence_ms2', 'retention_time_error']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.7269352Z [mode] DEIMoS paired-column layout detected (index_ms1 / mz_ms1 / mz_ms2) - using the DEIMoS adapter
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.9386062Z [ms1] indexed 1301247 MS1 peaks for isotope-window lookup
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.9399057Z [deimos] ms2 table: 5000 rows; dtypes index_ms1=int64, mz_ms1=float64, mz_ms2=str, intensity_ms2=str
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:08.9404661Z [deimos] list-valued MS2 columns detected -> one row per feature
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.5504646Z [deimos] 5000 features from 334148 precursor/fragment pairs
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.8529807Z [deimos] attached MS1 isotope peaks to 5000/5000 features (window -0.5/+4.5 Da, rt +/-0.05)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.8540321Z [build] 5000 candidate features
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.8684185Z [done] wrote 20 .ms files to work/ms_files (skipped 0)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9773321Z ##[group]Run cat work/conversion_report.txt || true
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9773744Z ^[[36;1mcat work/conversion_report.txt || true^[[0m
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9796338Z shell: /usr/bin/bash -e {0}
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9796734Z env:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9797092Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9797586Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9798071Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9798467Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9798894Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9799310Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9799726Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9845716Z [unzip] extracted deimos-results.zip -> work/extracted
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9846866Z [scan] '20260401_cbnv_standard_02 (2)_ms1_peaks' exists in several formats -> using 20260401_CBNV_standard_02 (2)_ms1_peaks.h5, ignoring ['20260401_CBNV_standard_02 (2)_ms1_peaks.csv']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9848516Z [scan] '20260401_cbnv_standard_02 (2)_ms2_extracted' exists in several formats -> using 20260401_CBNV_standard_02 (2)_ms2_extracted.h5, ignoring ['20260401_CBNV_standard_02 (2)_ms2_extracted.csv']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9849452Z [scan] MS1 files (1): ['20260401_CBNV_standard_02 (2)_ms1_peaks.h5']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9850059Z [scan] MS2 files (1): ['20260401_CBNV_standard_02 (2)_ms2_extracted.h5']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9850578Z [read] 20260401_CBNV_standard_02 (2)_ms1_peaks.h5: 1 pandas/HDF5 table(s)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9851453Z [read] 20260401_CBNV_standard_02 (2)_ms2_extracted.h5: 1 pandas/HDF5 table(s)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9852174Z [cols] ['index', 'controllerType', 'controllerNumber', 'scan', 'retention_time', 'mz', 'intensity', 'persistence', 'mz_weighted', 'retention_time_weighted']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9853149Z [cols] ['index', 'index_ms1', 'mz_ms1', 'retention_time_ms1', 'intensity_ms1', 'persistence_ms1', 'index_ms2', 'mz_ms2', 'retention_time_ms2', 'intensity_ms2', 'persistence_ms2', 'retention_time_error']
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9853977Z [mode] DEIMoS paired-column layout detected (index_ms1 / mz_ms1 / mz_ms2) - using the DEIMoS adapter
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9854518Z [ms1] indexed 1301247 MS1 peaks for isotope-window lookup
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9855050Z [deimos] ms2 table: 5000 rows; dtypes index_ms1=int64, mz_ms1=float64, mz_ms2=str, intensity_ms2=str
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9855570Z [deimos] list-valued MS2 columns detected -> one row per feature
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9856022Z [deimos] 5000 features from 334148 precursor/fragment pairs
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9856541Z [deimos] attached MS1 isotope peaks to 5000/5000 features (window -0.5/+4.5 Da, rt +/-0.05)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9856981Z [build] 5000 candidate features
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:09.9857351Z [done] wrote 20 .ms files to work/ms_files (skipped 0)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0150607Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0151784Z ##[group]Run actions/upload-artifact@v4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0152085Z with:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0152367Z   name: ms-files
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0152837Z   path: work/ms_files/**
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	work/manifest.csv
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	work/conversion_report.txt
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	work/conversion_summary.json
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0153316Z   retention-days: 14
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0153590Z   if-no-files-found: warn
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0153857Z   compression-level: 6
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0154282Z   overwrite: false
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0154575Z   include-hidden-files: false
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0154862Z env:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0155164Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0155721Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0156169Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0156565Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0156964Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0157543Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.0157914Z ##[endgroup]
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.1601344Z (node:2110) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.1602031Z (Use `node --trace-deprecation ...` to show where the warning was created)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.1699395Z Multiple search paths detected. Calculating the least common ancestor of all paths
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.1701818Z The least common ancestor is /home/runner/work/sirius4/sirius4/work. This will be the root directory of the artifact
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.1702883Z With the provided path, there will be 23 files uploaded
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.1703667Z Artifact name is valid!
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.1704227Z Root directory input is valid!
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.5099645Z Beginning upload of artifact content to blob storage
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.5453686Z (node:2110) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.8680206Z Uploaded bytes 43602
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.9303181Z Finished uploading artifact content to blob storage!
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.9304278Z SHA256 digest of uploaded artifact zip is fca47fd46f5a52bcbff96de19d898ce9a45f70ef5266010b759994fb62303b19
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:10.9308130Z Finalizing artifact upload
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.1606626Z Artifact ms-files.zip successfully finalized. Artifact ID 9590876785
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.1607524Z Artifact ms-files has been successfully uploaded! Final size is 43602 bytes. Artifact ID is 9590876785
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.1611973Z Artifact download URL: https://github.com/sakeermr/sirius4/actions/runs/32924160427/artifacts/9590876785
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.1745222Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.1746331Z Post job cleanup.
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.2776332Z Cache hit occurred on the primary key setup-python-Linux-x64-24.04-Ubuntu-python-3.11.16-pip-f7d454c7774915e9fe94ce9814752bec2882a1e82e3c91f47a5e7540c92ccaee, not saving cache.
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.2777758Z (node:2122) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.2778725Z (Use `node --trace-deprecation ...` to show where the warning was created)
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.2878086Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.2879345Z Post job cleanup.
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.3624244Z [command]/usr/bin/git version
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.3664324Z git version 2.55.0
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.3704329Z Temporarily overriding HOME='/home/runner/work/_temp/bfdff18c-ab82-4504-b919-889f7be43712' before making global git config changes
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.3706090Z Adding repository directory to the temporary git global config as a safe directory
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.3712342Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sirius4/sirius4
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.3744504Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.3776064Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4011964Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4034709Z http.https://github.com/.extraheader
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4046019Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4075488Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4268784Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4308428Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4645515Z Evaluate and set job outputs
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4651763Z Set output 'n_written'
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4653806Z Cleaning up orphan processes
+1 - Convert CSV/H5 to .ms	UNKNOWN STEP	2026-08-26T02:50:11.4865093Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2 - Run SIRIUS (rusirius image)	Set up job	﻿2026-08-26T02:50:17.0113475Z Current runner version: '2.336.0'
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0141492Z ##[group]Runner Image Provisioner
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0142583Z Hosted Compute Agent
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0143208Z Version: 20260729.566
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0143895Z Commit: cf7153fe6e25b664e8693c24944bf2b00355d109
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0144696Z Build Date: 2026-07-29T19:17:02Z
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0145430Z Worker ID: {6a3d59a8-5e94-4d1a-b395-3a6eee3cbf98}
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0146331Z Azure Region: westus
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0146959Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0148746Z ##[group]Operating System
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0149466Z Ubuntu
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0150012Z 24.04.4
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0150628Z LTS
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0151203Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0151797Z ##[group]Runner Image
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0152434Z Image: ubuntu-24.04
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0153024Z Version: 20260816.277.1
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0154197Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260816.277/images/ubuntu/Ubuntu2404-Readme.md
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0156436Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260816.277
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0157447Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0158983Z ##[group]GITHUB_TOKEN Permissions
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0161139Z Contents: read
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0161783Z Metadata: read
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0162478Z Packages: read
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0163138Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0165332Z Secret source: Actions
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0166547Z Prepare workflow directory
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0531562Z Prepare all required actions
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.0606551Z Getting action download info
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.4057234Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:17.5350965Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:18.0234200Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2 - Run SIRIUS (rusirius image)	Set up job	2026-08-26T02:50:18.2534541Z Complete job name: 2 - Run SIRIUS (rusirius image)
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	﻿2026-08-26T02:50:18.3444438Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3455956Z ##[group]Run actions/checkout@v4
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3457263Z with:
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3458332Z   repository: sakeermr/sirius4
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3468006Z   token: ***
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3469106Z   ssh-strict: true
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3469999Z   ssh-user: git
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3470919Z   persist-credentials: true
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3471918Z   clean: true
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3472840Z   sparse-checkout-cone-mode: true
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3473904Z   fetch-depth: 1
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3474771Z   fetch-tags: false
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3475679Z   show-progress: true
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3476626Z   lfs: false
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3477511Z   submodules: false
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3478592Z   set-safe-directory: true
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3479636Z   allow-unsafe-pr-checkout: false
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.3481004Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4498941Z Syncing repository: sakeermr/sirius4
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4502251Z ##[group]Getting Git version info
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4503690Z Working directory is '/home/runner/work/sirius4/sirius4'
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4543774Z [command]/usr/bin/git version
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4654953Z git version 2.55.0
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4712361Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4722708Z Temporarily overriding HOME='/home/runner/work/_temp/a9b692aa-2cc0-4e2e-8160-98c56bb8af40' before making global git config changes
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4726595Z Adding repository directory to the temporary git global config as a safe directory
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4729226Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sirius4/sirius4
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4759246Z Deleting the contents of '/home/runner/work/sirius4/sirius4'
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4764016Z ##[group]Initializing the repository
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4768730Z [command]/usr/bin/git init /home/runner/work/sirius4/sirius4
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4883073Z hint: Using 'master' as the name for the initial branch. This default branch name
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4886766Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4890878Z hint: to use in all of your new repositories, which will suppress this warning,
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4894297Z hint: call:
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4896049Z hint:
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4899512Z hint: 	git config --global init.defaultBranch <name>
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4902572Z hint:
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4905156Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4908336Z hint: 'development'. The just-created branch can be renamed via this command:
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4910945Z hint:
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4912611Z hint: 	git branch -m <name>
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4914342Z hint:
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4916830Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4919745Z Initialized empty Git repository in /home/runner/work/sirius4/sirius4/.git/
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4924575Z [command]/usr/bin/git remote add origin https://github.com/sakeermr/sirius4
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4951455Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4953891Z ##[group]Disabling automatic garbage collection
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4956085Z [command]/usr/bin/git config --local gc.auto 0
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4988883Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4991124Z ##[group]Setting up auth
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.4995812Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.5045471Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.5439190Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.5489156Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.5705494Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.5744824Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.5969077Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.6007197Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.6009097Z ##[group]Fetching the repository
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:18.6017532Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +940dcc43c3784b08bb17051ffe66cacbd34f2db4:refs/remotes/origin/main
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0014105Z From https://github.com/sakeermr/sirius4
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0015512Z  * [new ref]         940dcc43c3784b08bb17051ffe66cacbd34f2db4 -> origin/main
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0029847Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0031355Z ##[group]Determining the checkout info
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0032684Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0033476Z [command]/usr/bin/git sparse-checkout disable
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0083789Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0117783Z ##[group]Checking out the ref
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0123368Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0189168Z Switched to a new branch 'main'
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0194550Z branch 'main' set up to track 'origin/main'.
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0206979Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0251781Z [command]/usr/bin/git log -1 --format=%H
+2 - Run SIRIUS (rusirius image)	Run actions/checkout@v4	2026-08-26T02:50:19.0277866Z 940dcc43c3784b08bb17051ffe66cacbd34f2db4
+2 - Run SIRIUS (rusirius image)	Download .ms files	﻿2026-08-26T02:50:19.0534387Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.0536846Z ##[group]Run actions/download-artifact@v4
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.0537432Z with:
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.0537884Z   name: ms-files
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.0538682Z   path: work
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.0539185Z   merge-multiple: false
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.0539733Z   repository: sakeermr/sirius4
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.0540265Z   run-id: 32924160427
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.0540752Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.2111879Z Downloading single artifact
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.2258856Z (node:2162) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.2260216Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.4713829Z Preparing to download the following artifacts:
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.4715821Z - ms-files (ID: 9590876785, Size: 43602, Expected Digest: sha256:fca47fd46f5a52bcbff96de19d898ce9a45f70ef5266010b759994fb62303b19)
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.6957513Z Redirecting to blob download url: https://productionresultssa12.blob.core.windows.net/actions-results/a7a85918-b691-44f5-9d6f-3630d06288f4/workflow-job-run-04d98754-2fed-5779-858d-a3629f8513b4/artifacts/e925d82e0670df8029097ca3efa87040442568a5359ff58a21172892e4052e1b.zip
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.6961191Z Starting download of artifact to: /home/runner/work/sirius4/sirius4/work
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:19.9812893Z (node:2162) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:20.0556475Z SHA256 digest of downloaded artifact is fca47fd46f5a52bcbff96de19d898ce9a45f70ef5266010b759994fb62303b19
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:20.0558932Z Artifact download completed successfully.
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:20.0560637Z Total of 1 artifact(s) downloaded
+2 - Run SIRIUS (rusirius image)	Download .ms files	2026-08-26T02:50:20.0562078Z Download artifact has finished successfully
+2 - Run SIRIUS (rusirius image)	Free up disk space	﻿2026-08-26T02:50:20.0704807Z ##[group]Run sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android || true
+2 - Run SIRIUS (rusirius image)	Free up disk space	2026-08-26T02:50:20.0705940Z ^[[36;1msudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android || true^[[0m
+2 - Run SIRIUS (rusirius image)	Free up disk space	2026-08-26T02:50:20.0706712Z ^[[36;1mdf -h /^[[0m
+2 - Run SIRIUS (rusirius image)	Free up disk space	2026-08-26T02:50:20.0750532Z shell: /usr/bin/bash -e {0}
+2 - Run SIRIUS (rusirius image)	Free up disk space	2026-08-26T02:50:20.0751173Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Free up disk space	2026-08-26T02:50:47.1457330Z Filesystem      Size  Used Avail Use% Mounted on
+2 - Run SIRIUS (rusirius image)	Free up disk space	2026-08-26T02:50:47.1459931Z /dev/root       145G   42G  103G  29% /
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	﻿2026-08-26T02:50:47.1522742Z ##[group]Run chmod +x scripts/run_sirius.sh
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1523145Z ^[[36;1mchmod +x scripts/run_sirius.sh^[[0m
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1523502Z ^[[36;1m./scripts/run_sirius.sh work/ms_files work/project^[[0m
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1559960Z shell: /usr/bin/bash -e {0}
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1560247Z env:
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1560471Z   IMAGE: rformassspectrometry/rusirius
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1560931Z   SIRIUS_USER: ***
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1561160Z   SIRIUS_PASSWORD: 
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1561428Z   SIRIUS_TOOLS: formula fingerprint structure canopus
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1561738Z   PPM_MAX: 10
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1561959Z   INSTRUMENT: orbitrap
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1562180Z   ADDUCTS: [M+H]+
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1562386Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.1684205Z ==> pulling rformassspectrometry/rusirius
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:47.2357095Z Using default tag: latest
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.4974710Z latest: Pulling from rformassspectrometry/rusirius
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8478279Z 4b3ffd8ccb52: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8479307Z 2c9ba66d5dbe: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8480267Z b71e78fefbbb: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8481189Z 2a63ed8b2250: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8482058Z 999e4b8f7ed8: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8482782Z 3c7cdccc4be7: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8483923Z 5d246ec925db: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8484666Z 08e74fd5985d: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8485511Z 39038e16d1ba: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8486282Z 664fb1818bbb: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8487159Z 191985778909: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8487641Z 9c1a4a0706b7: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8488372Z e4b9e87bb831: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8488851Z 890065c4c99d: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8489259Z d923cf803a12: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8489679Z 62f215ca34c6: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8490134Z 971ba7cf0d8a: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8490543Z 3665120d345d: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8490937Z 0c5548878654: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8491378Z 4f4fb700ef54: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8491805Z d0a14cda504e: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8492202Z f3e486877410: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8492814Z d8738f52d644: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8493434Z 5ef12de10996: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8493970Z 52f50498164a: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8494599Z aec6c21a0a32: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8495032Z 4d76cd5dcf09: Pulling fs layer
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8495533Z 9c1a4a0706b7: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8496002Z e4b9e87bb831: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8496389Z 890065c4c99d: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8496904Z d923cf803a12: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8497292Z 62f215ca34c6: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8497662Z 971ba7cf0d8a: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8498314Z 3665120d345d: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8498700Z 0c5548878654: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8499239Z 4f4fb700ef54: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8499826Z d0a14cda504e: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8500236Z f3e486877410: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8500744Z 5d246ec925db: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8501113Z 2a63ed8b2250: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8501477Z 999e4b8f7ed8: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8501847Z 08e74fd5985d: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8502220Z 3c7cdccc4be7: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8502580Z 191985778909: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8502945Z 664fb1818bbb: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8503305Z d8738f52d644: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8503631Z 5ef12de10996: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8503844Z 52f50498164a: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8504047Z aec6c21a0a32: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:48.8504252Z 4d76cd5dcf09: Waiting
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.0894559Z 2c9ba66d5dbe: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.0895448Z 2c9ba66d5dbe: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.1865197Z 4b3ffd8ccb52: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.1871457Z 4b3ffd8ccb52: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.3272480Z 2a63ed8b2250: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.3273341Z 2a63ed8b2250: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.4176419Z 999e4b8f7ed8: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.4176971Z 999e4b8f7ed8: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.6503059Z 5d246ec925db: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.6505382Z 5d246ec925db: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.8276021Z 3c7cdccc4be7: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.8277330Z 3c7cdccc4be7: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.8873064Z 08e74fd5985d: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:49.8892352Z 08e74fd5985d: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.0596449Z 39038e16d1ba: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.0597047Z 39038e16d1ba: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.1293765Z 664fb1818bbb: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.1295404Z 664fb1818bbb: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.3038543Z 191985778909: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.3039776Z 191985778909: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.3662880Z 9c1a4a0706b7: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.3664948Z 9c1a4a0706b7: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.6731491Z 890065c4c99d: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.6734763Z 890065c4c99d: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.6755836Z 4b3ffd8ccb52: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.9917628Z b71e78fefbbb: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:50.9920177Z b71e78fefbbb: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.0384851Z d923cf803a12: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.0385397Z d923cf803a12: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.2259231Z 62f215ca34c6: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.2261676Z 62f215ca34c6: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.3070168Z 971ba7cf0d8a: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.3070672Z 971ba7cf0d8a: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.4523896Z 3665120d345d: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.6826965Z 4f4fb700ef54: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.6827596Z 4f4fb700ef54: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.9654854Z e4b9e87bb831: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:51.9659119Z e4b9e87bb831: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:52.0312423Z 2c9ba66d5dbe: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:52.5137893Z d0a14cda504e: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:52.5139833Z d0a14cda504e: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:53.8747971Z f3e486877410: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:53.8749191Z f3e486877410: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:54.3262997Z 5ef12de10996: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:54.3264650Z 5ef12de10996: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:54.3919312Z 0c5548878654: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:54.3920386Z 0c5548878654: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:54.8612768Z aec6c21a0a32: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:54.8614361Z aec6c21a0a32: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:55.3558259Z 4d76cd5dcf09: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:50:55.3568578Z 4d76cd5dcf09: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:02.4274679Z b71e78fefbbb: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:02.5174273Z 2a63ed8b2250: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:02.5296435Z 999e4b8f7ed8: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:03.1219993Z 3c7cdccc4be7: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:03.1315551Z 5d246ec925db: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:03.1395971Z 08e74fd5985d: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:03.1492337Z 39038e16d1ba: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:03.1582382Z 664fb1818bbb: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:03.1675337Z 191985778909: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:03.1753836Z 9c1a4a0706b7: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:03.9326935Z d8738f52d644: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:03.9328967Z d8738f52d644: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:05.3453103Z 52f50498164a: Verifying Checksum
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:05.3456298Z 52f50498164a: Download complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:13.9308921Z e4b9e87bb831: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:13.9404323Z 890065c4c99d: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:14.6739742Z d923cf803a12: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:14.6832790Z 62f215ca34c6: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:14.7751259Z 971ba7cf0d8a: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:14.7915791Z 3665120d345d: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:44.0290592Z 0c5548878654: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:44.0394683Z 4f4fb700ef54: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:44.0752691Z d0a14cda504e: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:48.7210722Z f3e486877410: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:53.6748629Z d8738f52d644: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:53.7250255Z 5ef12de10996: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:57.6715208Z 52f50498164a: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:57.6834971Z aec6c21a0a32: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:57.6932889Z 4d76cd5dcf09: Pull complete
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:57.6971642Z Digest: sha256:a37031eccae0a3df960b18b33ade119388b5a775c81d3534a4f583f32e3d7a8a
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:57.6983691Z Status: Downloaded newer image for rformassspectrometry/rusirius:latest
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:57.6992584Z docker.io/rformassspectrometry/rusirius:latest
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:57.7007949Z ==> locating sirius binary
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:57.9659733Z     sirius binary: /usr/local/bin/sirius
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:57.9681578Z ==> running SIRIUS on 20 .ms file(s)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:58.9654065Z SIRIUS is running in headless mode. GUI feature are not available!
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:59.5725008Z Aug 26, 2026 2:51:59 AM org.apache.commons.beanutils.FluentPropertyBeanIntrospector introspect
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:59.5727024Z INFO: Error when creating PropertyDescriptor for public final void org.apache.commons.configuration2.AbstractConfiguration.setProperty(java.lang.String,java.lang.Object)! Ignoring this property.
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:59.8462672Z INFO    02:51:59 - Sirius Workspace Successfully initialized at: /root/.sirius-6.3
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:59.8576569Z INFO    02:51:59 - You run SIRIUS 6.3.7 on linux_amd64
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:51:59.8579695Z INFO    02:51:59 - You run SIRIUS in 'CLI' mode.
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:00.0543546Z INFO    02:52:00 - Sirius was compiled with the following ILP solvers: GLPK-v1.7.0 (included), Gurobi-v9.1.1, CPLEX-v12.7.1, COIN-OR-v2.10.12.1
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:00.0561394Z INFO    02:52:00 - Treebuilder priorities loaded from 'sirius.properties' are: [CLP, GUROBI, CPLEX]
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:00.0689283Z INFO    02:52:00 - CPU check done. 2 cores that handle 4 threads were found.
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:00.0770377Z INFO    02:52:00 - Job manager successful initialized with 3 CPU thread(s) and 3 IO thread(s).
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:00.2662802Z INFO    02:52:00 - Starting http Client with MaxPerRoute=3 / maxTotal=5 (CPU-Threads=3).
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:01.1433892Z WARNING 02:52:01 - No login Found: Not Logged in, No valid refresh token Available
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:01.1451528Z INFO    02:52:01 - Custom databases loaded.
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:01.1494474Z INFO    02:52:01 - Web API initialized in 00:00:01.035. Started loading active subscription in background...
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:01.1536539Z FINE    02:52:01 - <0>[JJob-0] Running post processing
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:01.1541239Z FINE    02:52:01 - <0>[JJob-0] Running cleanup
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:01.9168359Z INFO    02:52:01 - Running with following arguments: [--version]
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.0261791Z SIRIUS 6.3.7
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.0262285Z SIRIUS lib: 5.10.0
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.0262678Z CSI:FingerID lib: 3.0.16
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3016441Z [4.194s][warning][aot] Skipping jdk/internal/event/Event: JFR event class
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3023833Z [4.194s][warning][aot] Skipping picocli/CommandLine$Spec$Target: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3024731Z [4.195s][warning][aot] Skipping picocli/CommandLine$Model$Predicate: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3030388Z [4.195s][warning][aot] Skipping picocli/CommandLine$Model$ArgGroupSpec$Builder: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3032653Z [4.195s][warning][aot] Skipping de/unijena/bioinf/ms/frontend/subtools/lcms_align/LcmsAlignOptions$TimeRangeOrValue: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3034333Z [4.195s][warning][aot] Skipping de/unijena/bioinf/ms/frontend/subtools/lcms_align/LcmsAlignOptions$MassRangeOrValue: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3037012Z [4.196s][warning][aot] Skipping de/unijena/bioinf/ms/frontend/workflow/WorkflowBuilder$ParseResultHandler: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3040280Z [4.196s][warning][aot] Skipping picocli/CommandLine$Help$Ansi$IStyle: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3041178Z [4.197s][warning][aot] Skipping jdk/proxy2/$Proxy5: Unsupported location
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3043418Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$CharacterConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3044771Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$BooleanConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3046030Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$CharSequenceConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3046752Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$ByteConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3047445Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$CharArrayConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3048392Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$FileConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3049637Z [4.197s][warning][aot] Skipping picocli/CommandLine$Model$Messages$1: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3050918Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$DoubleConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3052107Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$FloatConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3053250Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$LongConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3054734Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$IntegerConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3055404Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$ShortConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3056039Z [4.197s][warning][aot] Skipping picocli/CommandLine$Model$TypedMember: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3056685Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$StringConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3057377Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$StringBuilderConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3058910Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$ClassConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3060174Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$ByteOrderConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3061438Z [4.197s][warning][aot] Skipping picocli/CommandLine$IParameterPreprocessor: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3062498Z [4.197s][warning][aot] Skipping picocli/CommandLine$ParseResult$Builder: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3063660Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$ISO8601TimeConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3064958Z [4.197s][warning][aot] Skipping picocli/CommandLine$NoOpModelTransformer: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3066383Z [4.197s][warning][aot] Skipping picocli/CommandLine$NoOpParameterPreprocessor: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3067767Z [4.197s][warning][aot] Skipping picocli/CommandLine$IModelTransformer: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3069383Z [4.197s][warning][aot] Skipping picocli/CommandLine$IDefaultValueProvider: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3071023Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$NetworkInterfaceConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3071721Z [4.197s][warning][aot] Skipping picocli/CommandLine$ScopeType: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3072327Z [4.197s][warning][aot] Skipping picocli/CommandLine$IVersionProvider: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3072991Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$InetAddressConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3073686Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$CharsetConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3074420Z [4.197s][warning][aot] Skipping picocli/CommandLine$NoDefaultProvider: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3075955Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$PatternConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3077185Z [4.197s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3077962Z [4.197s][warning][aot] Skipping picocli/CommandLine$NoVersionProvider: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3078943Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$UUIDConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3079615Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$TimeZoneConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3080300Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$CurrencyConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3080951Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$URIConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3082103Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$URLConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3083485Z [4.197s][warning][aot] Skipping picocli/CommandLine$IExceptionHandler: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3084741Z [4.197s][warning][aot] Skipping picocli/CommandLine$Mixin: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3085811Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$ISO8601DateConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3086541Z [4.197s][warning][aot] Skipping picocli/CommandLine$Unmatched: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3087303Z [4.197s][warning][aot] Skipping picocli/CommandLine$ParentCommand: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3088228Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$BigDecimalConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3089391Z [4.197s][warning][aot] Skipping picocli/CommandLine$BuiltIn$BigIntegerConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3090461Z [4.197s][warning][aot] Skipping picocli/CommandLine$Help$Ansi: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3091422Z [4.197s][warning][aot] Skipping picocli/CommandLine$IParseResultHandler: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3092691Z [4.197s][warning][aot] Skipping picocli/CommandLine$DuplicateOptionAnnotationsException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3094145Z [4.199s][warning][aot] Skipping picocli/CommandLine$DuplicateNameException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3095537Z [4.199s][warning][aot] Skipping picocli/CommandLine$MutuallyExclusiveArgsException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3096997Z [4.199s][warning][aot] Skipping picocli/CommandLine$MissingParameterException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3098572Z [4.199s][warning][aot] Skipping picocli/CommandLine$TypeConversionException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3099731Z [4.199s][warning][aot] Skipping picocli/CommandLine$TraceLevel: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3100655Z [4.199s][warning][aot] Skipping picocli/CommandLine$AutoHelpMixin: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3101734Z [4.199s][warning][aot] Skipping picocli/CommandLine$PositionalParametersSorter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3102762Z [4.199s][warning][aot] Skipping picocli/CommandLine$BuiltIn: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3103916Z [4.200s][warning][aot] Skipping picocli/CommandLine$IHelpFactory: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3105042Z [4.200s][warning][aot] Skipping picocli/CommandLine$LookBehind: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3106098Z [4.200s][warning][aot] Skipping picocli/CommandLine$INegatableOptionTransformer: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3107147Z [4.200s][warning][aot] Skipping picocli/CommandLine$RegexTransformer: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3108437Z [4.200s][warning][aot] Skipping picocli/CommandLine$Spec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3109361Z [4.200s][warning][aot] Skipping picocli/CommandLine$BuiltIn$ReflectionConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3110297Z [4.201s][warning][aot] Skipping picocli/CommandLine$ArgGroup: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3111137Z [4.201s][warning][aot] Skipping picocli/CommandLine$Option: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3112192Z [4.201s][warning][aot] Skipping de/unijena/bioinf/ms/frontend/subtools/Provide$Versions: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3113390Z [4.201s][warning][aot] Skipping picocli/CommandLine$Help$DefaultParamLabelRenderer: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3114654Z [4.201s][warning][aot] Skipping picocli/CommandLine$Interpreter$3: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3115548Z [4.201s][warning][aot] Skipping jdk/internal/event/ThreadSleepEvent: JFR event class
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3116448Z [4.202s][warning][aot] Skipping picocli/CommandLine$ITypeConverter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3117412Z [4.202s][warning][aot] Skipping picocli/CommandLine$ParseResult: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3118647Z [4.202s][warning][aot] Skipping picocli/CommandLine$ParseResult$GroupMatch: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3119927Z [4.202s][warning][aot] Skipping jdk/proxy1/$Proxy0: Unsupported location
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3120935Z [4.202s][warning][aot] Skipping picocli/CommandLine$ParseResult$GroupMatchContainer: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3121935Z [4.202s][warning][aot] Skipping jdk/proxy2/$Proxy1: Unsupported location
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3122671Z [4.202s][warning][aot] Skipping jdk/proxy2/$Proxy2: Unsupported location
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3123772Z [4.202s][warning][aot] Skipping picocli/CommandLine$ParameterIndexGapException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3125069Z [4.202s][warning][aot] Skipping picocli/CommandLine$Help$IParamLabelRenderer: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3126089Z [4.202s][warning][aot] Skipping picocli/CommandLine$3: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3127080Z [4.202s][warning][aot] Skipping picocli/CommandLine$AbstractParseResultHandler: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3128571Z [4.202s][warning][aot] Skipping picocli/CommandLine$IExceptionHandler2: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3129618Z [4.202s][warning][aot] Skipping picocli/CommandLine$IParseResultHandler2: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3130506Z [4.202s][warning][aot] Skipping picocli/CommandLine$AbstractHandler: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3131407Z [4.202s][warning][aot] Skipping picocli/CommandLine$Help$Ansi$Text: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3132460Z [4.202s][warning][aot] Skipping picocli/CommandLine$UnmatchedArgumentException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3133733Z [4.202s][warning][aot] Skipping picocli/CommandLine$MaxValuesExceededException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3135032Z [4.202s][warning][aot] Skipping picocli/CommandLine$OverwrittenOptionException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3136345Z [4.202s][warning][aot] Skipping picocli/CommandLine$MissingTypeConverterException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3137428Z [4.202s][warning][aot] Skipping picocli/CommandLine$RunLast: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3138396Z [4.202s][warning][aot] Skipping picocli/CommandLine$2: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3139195Z [4.202s][warning][aot] Skipping picocli/CommandLine$Interpreter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3140138Z [4.202s][warning][aot] Skipping picocli/CommandLine$Model$CaseAwareLinkedMap: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3141104Z [4.202s][warning][aot] Skipping picocli/CommandLine$Help$ColorScheme: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3142236Z [4.202s][warning][aot] Skipping picocli/CommandLine$IExecutionStrategy: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3143269Z [4.202s][warning][aot] Skipping picocli/CommandLine$IParameterExceptionHandler: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3144490Z [4.202s][warning][aot] Skipping picocli/CommandLine$IExecutionExceptionHandler: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3145690Z [4.202s][warning][aot] Skipping picocli/CommandLine$ColoredStackTraceWriter: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3146881Z [4.202s][warning][aot] Skipping picocli/CommandLine$Help$ColorScheme$Builder: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3147793Z [4.202s][warning][aot] Skipping picocli/CommandLine: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3149001Z [4.202s][warning][aot] Skipping picocli/CommandLine$ExecutionException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3150350Z [4.202s][warning][aot] Skipping picocli/CommandLine$ParameterException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3151595Z [4.202s][warning][aot] Skipping de/unijena/bioinf/ms/frontend/DefaultParameter$Converter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3152618Z [4.202s][warning][aot] Skipping jdk/proxy2/$Proxy6: Unsupported location
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3153773Z [4.202s][warning][aot] Skipping jdk/internal/event/SecurityProviderServiceEvent: JFR event class
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3154870Z [4.202s][warning][aot] Skipping picocli/CommandLine$Model$CommandSpec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3155872Z [4.202s][warning][aot] Skipping picocli/CommandLine$Model: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3156805Z [4.202s][warning][aot] Skipping picocli/CommandLine$Command: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3157735Z [4.202s][warning][aot] Skipping picocli/CommandLine$1: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3158885Z [4.202s][warning][aot] Skipping picocli/CommandLine$Model$ArgSpec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3160253Z [4.202s][warning][aot] Skipping de/unijena/bioinf/ms/frontend/subtools/config/DefaultParameterConfigLoader$1: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3161468Z [4.203s][warning][aot] Skipping jdk/proxy2/$Proxy8: Unsupported location
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3162720Z [4.203s][warning][aot] Skipping de/unijena/bioinf/ms/frontend/subtools/custom_db/BioTransformerOptions$RangeValidator: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3164166Z [4.203s][warning][aot] Skipping picocli/CommandLine$IHelpSectionRenderer: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3165340Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$CommandUserObject: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3166483Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$IExtensible: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3167794Z [4.203s][warning][aot] Skipping picocli/CommandLine$NoCompletionCandidates: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3169388Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$ObjectScope: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3170436Z [4.203s][warning][aot] Skipping picocli/CommandLine$Parameters: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3171700Z [4.203s][warning][aot] Skipping picocli/CommandLine$NullParameterConsumer: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3172978Z [4.203s][warning][aot] Skipping picocli/CommandLine$DefaultFactory: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3173982Z [4.203s][warning][aot] Skipping com/sun/proxy/jdk/proxy1/$Proxy3: Unsupported location
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3175006Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$ObjectBinding: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3176128Z [4.203s][warning][aot] Skipping picocli/CommandLine$Help$ColorScheme$1: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3177075Z [4.203s][warning][aot] Skipping jdk/proxy2/$Proxy7: Unsupported location
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3177943Z [4.203s][warning][aot] Skipping picocli/CommandLine$IFactory: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3179446Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$IOrdered: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3180679Z [4.203s][warning][aot] Skipping picocli/CommandLine$Help$IOptionRenderer: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3182137Z [4.203s][warning][aot] Skipping picocli/CommandLine$Help$IParameterRenderer: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3183423Z [4.203s][warning][aot] Skipping picocli/CommandLine$Help$ShortestFirst: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3184626Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$PositionalParamSpec$Builder: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3185866Z [4.203s][warning][aot] Skipping picocli/CommandLine$Help$Ansi$StyledSection: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3186986Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$Messages: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3188407Z [4.203s][warning][aot] Skipping picocli/CommandLine$Help$Visibility: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3189508Z [4.203s][warning][aot] Skipping picocli/CommandLine$IParameterConsumer: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3190889Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$ITypeInfo: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3191967Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$ArgGroupSpec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3193120Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$PositionalParamSpec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3194158Z [4.203s][warning][aot] Skipping picocli/CommandLine$Help: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3195125Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$IScoped: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3196150Z [4.203s][warning][aot] Skipping picocli/CommandLine$PicocliException: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3197202Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$ParserSpec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3198407Z [4.203s][warning][aot] Skipping picocli/CommandLine$Range: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3199382Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$IScope: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3200374Z [4.203s][warning][aot] Skipping picocli/CommandLine$Tracer: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3201369Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$IGetter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3202402Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$ISetter: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3203524Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$InitialValueState: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3204681Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$IAnnotatedElement: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3205976Z [4.203s][warning][aot] Skipping picocli/CommandLine$InitializationException: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3207189Z [4.203s][warning][aot] Skipping picocli/CommandLine$Assert: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3208368Z [4.203s][warning][aot] Skipping picocli/CommandLine$Help$Ansi$Style: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3209440Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$Interpolator: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3210571Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$RuntimeTypeInfo: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3211697Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$Interpolator$2: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3212800Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$Interpolator$1: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3213958Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$Interpolator$ILookup: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3215094Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$Interpolator$3: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3216576Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$Interpolator$4: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3217841Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$CaseAwareLinkedMap$CaseAwareKeySet: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3219300Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$4: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3220462Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$3: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3221608Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$2: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3222711Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$OptionSpec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3223830Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$OptionSpec$Builder: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3224971Z [4.203s][warning][aot] Skipping picocli/CommandLine$RegexTransformer$Builder: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3226107Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$5: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3227481Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$6: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3228832Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$7: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3229967Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$8: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3231114Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$9: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3232330Z [4.203s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$10: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3258916Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$11: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3260177Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$12: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3261351Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$14: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3262520Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$13: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3263675Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$16: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3264836Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$15: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3265981Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$18: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3267135Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$17: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3268586Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$UsageMessageSpec$19: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3269729Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$ArgSpec$Builder: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3270831Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$FieldBinding: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3271923Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$MethodBinding: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3272927Z [4.204s][warning][aot] Skipping jdk/proxy1/$Proxy4: Unsupported location
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3273963Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$CommandReflection: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3275063Z [4.204s][warning][aot] Skipping jdk/internal/event/X509CertificateEvent: Not in loaded state
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3276039Z [4.204s][warning][aot] Skipping jdk/internal/event/X509CertificateEvent: JFR event class
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3277205Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$MethodParam: Unlinked class not supported by AOTConfiguration
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.3278924Z [4.204s][warning][aot] Skipping picocli/CommandLine$Model$CommandReflection$1: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.9703490Z Temporary AOTConfiguration recorded: /root/.sirius-6.3/sirius.aot.config
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.9704983Z Launching child process /home/rstudio/sirius/lib/runtime/bin/java to assemble AOT cache /root/.sirius-6.3/sirius.aot using configuration /root/.sirius-6.3/sirius.aot.config
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:02.9773014Z Picked up JAVA_TOOL_OPTIONS: -Djava.class.path=/home/rstudio/sirius/lib/app/sirius_rest_service-6.3.7-boot.jar:/lib/gurobi.jar:/lib/cplex.jar -Xms2G -XX:MaxRAMPercentage=60 -XX:+UseStringDeduplication -XX:+ExitOnOutOfMemoryError -Dspring.aot.enabled=true --add-opens=java.desktop/java.awt=ALL-UNNAMED -Dawt.toolkit.name=XToolkit -XX:AOTCacheOutput=/root/.sirius-6.3/sirius.aot -XX:AOTConfiguration=/root/.sirius-6.3/sirius.aot.config -XX:AOTMode=create
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.4410620Z Reading AOTConfiguration /root/.sirius-6.3/sirius.aot.config and writing AOTCache /root/.sirius-6.3/sirius.aot
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.7002450Z [0.722s][warning][aot] Skipping picocli/CommandLine$Model$OptionSpec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.7004505Z [0.722s][warning][aot,resolve] Cannot aot-resolve Lambda proxy because picocli.CommandLine$Model$OptionSpec is excluded
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.7007168Z [0.722s][warning][aot,resolve] Cannot aot-resolve Lambda proxy because picocli.CommandLine$Model$OptionSpec is excluded
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.7009169Z [0.722s][warning][aot,resolve] Cannot aot-resolve Lambda proxy because picocli.CommandLine$Model$OptionSpec is excluded
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.7010898Z [0.723s][warning][aot,resolve] Cannot aot-resolve Lambda proxy because picocli.CommandLine$Model$OptionSpec is excluded
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.7015702Z [0.724s][warning][aot,resolve] Cannot aot-resolve Lambda proxy because picocli.CommandLine$Model$OptionSpec is excluded
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8742050Z [0.897s][warning][aot        ] Skipping picocli/CommandLine$Model$ArgSpec$Builder: Unlinked class not supported by AOTClassLinking
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8743243Z [0.897s][warning][aot        ] Skipping picocli/CommandLine$Model$OptionSpec$Builder: Unlinked class not supported by AOTClassLinking
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8744233Z [0.897s][warning][aot        ] Skipping picocli/CommandLine$ITypeConverter: Unlinked class not supported by AOTClassLinking
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8746066Z [0.898s][warning][aot        ] Skipping picocli/CommandLine$Model$ArgSpec: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8747642Z [0.898s][warning][aot        ] Skipping picocli/CommandLine$ParameterException: Unlinked class not supported by AOTClassLinking
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8749621Z [0.898s][warning][aot        ] Skipping picocli/CommandLine$InitializationException: Unlinked class not supported by AOTClassLinking
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8751052Z [0.898s][warning][aot        ] Skipping picocli/CommandLine$Model$IOrdered: Old class has been linked
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8752120Z [0.898s][warning][aot        ] Skipping picocli/CommandLine$IParameterPreprocessor: Unlinked class not supported by AOTClassLinking
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8758305Z [0.899s][warning][aot        ] Skipping picocli/CommandLine$PicocliException: Unlinked class not supported by AOTClassLinking
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:03.8759461Z [0.899s][warning][aot        ] Skipping picocli/CommandLine$Model$ISetter: Unlinked class not supported by AOTClassLinking
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:04.5722087Z AOTCache creation is complete: /root/.sirius-6.3/sirius.aot 43302912 bytes
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:04.5909812Z Removed temporary AOT configuration file /root/.sirius-6.3/sirius.aot.config
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:04.6675564Z ##[warning]no SIRIUS_USER/SIRIUS_PASSWORD secret - webservice tools may fail
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:04.9410138Z SIRIUS is running in headless mode. GUI feature are not available!
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.0528280Z Aug 26, 2026 2:52:05 AM org.apache.commons.beanutils.FluentPropertyBeanIntrospector introspect
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.0530447Z INFO: Error when creating PropertyDescriptor for public final void org.apache.commons.configuration2.AbstractConfiguration.setProperty(java.lang.String,java.lang.Object)! Ignoring this property.
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.1780821Z INFO    02:52:05 - Sirius Workspace Successfully initialized at: /root/.sirius-6.3
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.1892605Z INFO    02:52:05 - You run SIRIUS 6.3.7 on linux_amd64
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.1899320Z INFO    02:52:05 - You run SIRIUS in 'CLI' mode.
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.2273560Z INFO    02:52:05 - Sirius was compiled with the following ILP solvers: GLPK-v1.7.0 (included), Gurobi-v9.1.1, CPLEX-v12.7.1, COIN-OR-v2.10.12.1
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.2287350Z INFO    02:52:05 - Treebuilder priorities loaded from 'sirius.properties' are: [CLP, GUROBI, CPLEX]
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.2371717Z INFO    02:52:05 - CPU check done. 2 cores that handle 4 threads were found.
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.2388633Z INFO    02:52:05 - Job manager successful initialized with 3 CPU thread(s) and 3 IO thread(s).
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.3115425Z INFO    02:52:05 - Starting http Client with MaxPerRoute=3 / maxTotal=5 (CPU-Threads=3).
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.4070515Z WARNING 02:52:05 - No login Found: Not Logged in, No valid refresh token Available
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.4084406Z INFO    02:52:05 - Custom databases loaded.
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.4086124Z INFO    02:52:05 - Web API initialized in 00:00:00.166. Started loading active subscription in background...
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.4094798Z FINE    02:52:05 - <0>[JJob-0] Running post processing
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.4127035Z FINE    02:52:05 - <0>[JJob-0] Running cleanup
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.6835147Z INFO    02:52:05 - Running with following arguments: [--maxmz, 800, --input, work/ms_files, --project, work/project, config, --IsotopeSettings.filter=true, --FormulaSearchDB=none, --StructureSearchDB=BIO, --MS1MassDeviation.allowedMassDeviation=10ppm, --MS2MassDeviation.allowedMassDeviation=10ppm, --AdductSettings.enforced=[M+H]+, --AlgorithmProfile=orbitrap, formula, fingerprint, structure, canopus, write-summaries, --output, work/project/summaries]
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.7263281Z FINE    02:52:05 - <1>[InputExpanderJJob-1] Running post processing
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.7290517Z FINE    02:52:05 - <1>[InputExpanderJJob-1] Running cleanup
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.7308625Z INFO    02:52:05 - <2>[InputExpanderJJob-2] Expanding Input Files: 'work/ms_files'...
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.7434762Z INFO    02:52:05 - <2>[InputExpanderJJob-2] ...Input Files successfully expanded!
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.7444287Z FINE    02:52:05 - <2>[InputExpanderJJob-2] Running post processing
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:05.7459206Z FINE    02:52:05 - <2>[InputExpanderJJob-2] Running cleanup
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0823518Z SEVERE  02:52:06 - Unexpected Error!
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0824548Z picocli.CommandLine$UnmatchedArgumentException: Unmatched argument at index 16: 'structure'
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0825382Z 	at picocli.CommandLine$Interpreter.validateConstraints(CommandLine.java:13691)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0826040Z 	at picocli.CommandLine$Interpreter.parse(CommandLine.java:13643)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0826706Z 	at picocli.CommandLine$Interpreter.processSubcommand(CommandLine.java:13938)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0827372Z 	at picocli.CommandLine$Interpreter.processArguments(CommandLine.java:13834)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0828218Z 	at picocli.CommandLine$Interpreter.parse(CommandLine.java:13620)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0828873Z 	at picocli.CommandLine$Interpreter.processSubcommand(CommandLine.java:13938)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0829520Z 	at picocli.CommandLine$Interpreter.processArguments(CommandLine.java:13834)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0830124Z 	at picocli.CommandLine$Interpreter.parse(CommandLine.java:13620)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0830731Z 	at picocli.CommandLine$Interpreter.processSubcommand(CommandLine.java:13938)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0831389Z 	at picocli.CommandLine$Interpreter.processArguments(CommandLine.java:13834)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0832005Z 	at picocli.CommandLine$Interpreter.parse(CommandLine.java:13620)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0832558Z 	at picocli.CommandLine$Interpreter.parse(CommandLine.java:13588)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0833566Z 	at picocli.CommandLine$Interpreter.parse(CommandLine.java:13483)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0840734Z 	at picocli.CommandLine.parseArgs(CommandLine.java:1552)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0841334Z 	at de.unijena.bioinf.ms.frontend.Run.parseArgs(Run.java:89)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0842024Z 	at de.unijena.bioinf.ms.frontend.SiriusCLIApplication.run(SiriusCLIApplication.java:144)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0842832Z 	at de.unijena.bioinf.ms.frontend.SiriusCLIApplication.runMain(SiriusCLIApplication.java:78)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0843791Z 	at de.unijena.bioinf.ms.middleware.SiriusMiddlewareApplication.main(SiriusMiddlewareApplication.java:264)
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0844376Z 
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0860457Z INFO    02:52:06 - CLI shut down hook: SIRIUS is cleaning up threads and shuts down...
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.0862416Z INFO    02:52:06 - Closing AuthService...
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.1765373Z ==> SIRIUS finished. Project: work/project
+2 - Run SIRIUS (rusirius image)	Run SIRIUS	2026-08-26T02:52:06.1778978Z work/project:
+2 - Run SIRIUS (rusirius image)	Summarise	﻿2026-08-26T02:52:06.1832896Z ##[group]Run echo "## SIRIUS results" >> "$GITHUB_STEP_SUMMARY"
+2 - Run SIRIUS (rusirius image)	Summarise	2026-08-26T02:52:06.1833386Z ^[[36;1mecho "## SIRIUS results" >> "$GITHUB_STEP_SUMMARY"^[[0m
+2 - Run SIRIUS (rusirius image)	Summarise	2026-08-26T02:52:06.1833919Z ^[[36;1mfind work/project -maxdepth 2 -name "*.tsv" | head -n 20 >> "$GITHUB_STEP_SUMMARY" || true^[[0m
+2 - Run SIRIUS (rusirius image)	Summarise	2026-08-26T02:52:06.1870531Z shell: /usr/bin/bash -e {0}
+2 - Run SIRIUS (rusirius image)	Summarise	2026-08-26T02:52:06.1870794Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	﻿2026-08-26T02:52:06.2002789Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2004057Z ##[group]Run actions/upload-artifact@v4
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2004327Z with:
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2004528Z   name: sirius-results
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2004768Z   path: work/project/**
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2004997Z   retention-days: 30
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2005225Z   if-no-files-found: warn
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2005467Z   compression-level: 6
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2005685Z   overwrite: false
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2005909Z   include-hidden-files: false
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.2006150Z ##[endgroup]
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.3598002Z (node:2740) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.3599051Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2 - Run SIRIUS (rusirius image)	Upload SIRIUS project + summaries	2026-08-26T02:52:06.3648645Z ##[warning]No files were found with the provided path: work/project/**. No artifacts will be uploaded.
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	﻿2026-08-26T02:52:06.3896278Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.3898652Z Post job cleanup.
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.4783930Z [command]/usr/bin/git version
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.4866078Z git version 2.55.0
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.4906541Z Temporarily overriding HOME='/home/runner/work/_temp/f9502af7-c43e-41b1-992a-021004bfe9cc' before making global git config changes
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.4908346Z Adding repository directory to the temporary git global config as a safe directory
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.4912453Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sirius4/sirius4
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.4953963Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.4991970Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.5253827Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.5281722Z http.https://github.com/.extraheader
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.5294022Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.5327621Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.5585577Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2 - Run SIRIUS (rusirius image)	Post Run actions/checkout@v4	2026-08-26T02:52:06.5625062Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2 - Run SIRIUS (rusirius image)	Complete job	﻿2026-08-26T02:52:06.6016777Z Cleaning up orphan processes
+2 - Run SIRIUS (rusirius image)	Complete job	2026-08-26T02:52:06.6432692Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

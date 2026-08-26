@@ -7,5 +7,3 @@ __pycache__/
 .DS_Store
 data/*.zip
 !data/.gitkeep
-*_log.txt
-report*.txt

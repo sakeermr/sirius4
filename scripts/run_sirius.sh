@@ -59,6 +59,13 @@ DOCKER_ENV=()
 [ -n "${SIRIUS_USER:-}" ]     && DOCKER_ENV+=(-e "SIRIUS_USER=${SIRIUS_USER}")
 [ -n "${SIRIUS_PASSWORD:-}" ] && DOCKER_ENV+=(-e "SIRIUS_PASSWORD=${SIRIUS_PASSWORD}")
 
+echo "==> SIRIUS self-report (version + top-level usage)"
+docker run --rm --entrypoint /bin/bash "$IMAGE" -lc "
+  '$SIRIUS_BIN' --version 2>&1 | head -n 20
+  echo '--- top-level commands ---'
+  '$SIRIUS_BIN' --help 2>&1 | head -n 60
+" || echo "::warning::could not query the sirius binary"
+
 echo "==> running SIRIUS on $(ls "$MS_DIR"/*.ms | wc -l) .ms file(s)"
 docker run --rm \
   -v "$PWD:/work" -w /work \
@@ -92,5 +99,17 @@ docker run --rm \
       write-summaries --output '$PROJECT/summaries'
   "
 
-echo "==> SIRIUS finished. Project: $PROJECT"
+# SIRIUS can print usage and exit 0 when the argument syntax does not match
+# the version inside the image - so never trust the exit code alone.
+echo "==> verifying SIRIUS actually wrote a project"
+if [ -z "$(ls -A "$PROJECT" 2>/dev/null)" ]; then
+  echo "::error::SIRIUS exited 0 but '$PROJECT' is empty - no results were produced."
+  echo "This almost always means the CLI syntax does not match the SIRIUS version"
+  echo "in this image. Check the '--- top-level commands ---' output above and"
+  echo "adjust SIRIUS_ARGS / SIRIUS_TOOLS in scripts/run_sirius.sh accordingly."
+  exit 3
+fi
+
+N_SUM=$(find "$PROJECT" -name "*.tsv" 2>/dev/null | wc -l)
+echo "==> SIRIUS finished. Project: $PROJECT ($N_SUM summary tables)"
 ls -R "$PROJECT" | head -n 50
