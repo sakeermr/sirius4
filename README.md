@@ -112,7 +112,14 @@ The `ms1_peaks` table has **no** feature id - it is a flat peak list - so the
 isotope pattern of each feature is recovered by searching that list in a window
 around the precursor (`-0.5` to `+4.5` Da, and +/- `--iso-rt-tol` in retention time).
 
-This layout is detected automatically. Two knobs matter:
+DEIMoS writes `ms2_extracted` in one of two shapes, both handled automatically:
+
+* **one row per feature**, with the whole fragment spectrum inside a single
+  cell as a list — `mz_ms2 = "[283.1687, 223.1113, ...]"`. This is what
+  `deimos.alignment`/`deimos.peakpick` normally produce.
+* **one row per precursor/fragment pair**, with scalar `mz_ms2` values.
+
+Two knobs matter:
 
 * `--iso-rt-tol` - **in the same unit as your `retention_time` column.** DEIMoS
   usually writes minutes, so `0.05` is 3 s. If your column is in seconds, use

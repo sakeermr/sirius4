@@ -340,6 +340,94 @@ def deimos_fid(key) -> str:
         return "F" + safe_id(key)
 
 
+def parse_peak_list(v) -> list[float]:
+    """
+    DEIMoS commonly stores a whole fragment spectrum in ONE cell, e.g.
+        mz_ms2        = "[283.1687, 223.1113, 265.1582]"
+        intensity_ms2 = "[18642626.0, 8685262.0, 6802170.5]"
+    Accepts a real list/array, a bytes value, a bracketed string, or a plain
+    scalar, and always returns a list of floats.
+    """
+    if v is None or (isinstance(v, float) and not np.isfinite(v)):
+        return []
+    if isinstance(v, (list, tuple, np.ndarray)):
+        out = []
+        for x in v:
+            try:
+                out.append(float(x))
+            except (TypeError, ValueError):
+                pass
+        return out
+    if isinstance(v, bytes):
+        v = v.decode(errors="replace")
+    if isinstance(v, (int, float, np.integer, np.floating)):
+        return [float(v)]
+    s = str(v).strip()
+    if not s or s.lower() in {"nan", "none", "[]"}:
+        return []
+    s = s.strip("[]() ")
+    out = []
+    for part in re.split(r"[,;\s]+", s):
+        if not part:
+            continue
+        try:
+            out.append(float(part))
+        except ValueError:
+            pass
+    return out
+
+
+def looks_like_list_column(s: pd.Series) -> bool:
+    v = s.dropna()
+    if not len(v):
+        return False
+    v0 = v.iloc[0]
+    if isinstance(v0, (list, tuple, np.ndarray)):
+        return True
+    if isinstance(v0, bytes):
+        v0 = v0.decode(errors="replace")
+    return isinstance(v0, str) and v0.strip().startswith("[")
+
+
+def collect_deimos_lists(d: pd.DataFrame, comps: dict[str, Compound], args) -> int:
+    """One row per feature; the MS2 spectrum lives inside list-valued cells."""
+    total, ragged, empty = 0, 0, 0
+    has_int = "intensity_ms2" in d.columns
+
+    for _, row in d.iterrows():
+        mzs = parse_peak_list(row.get("mz_ms2"))
+        if not mzs:
+            empty += 1
+            continue
+        ints = parse_peak_list(row.get("intensity_ms2")) if has_int else []
+        if not ints:
+            ints = [1.0] * len(mzs)
+        elif len(ints) != len(mzs):
+            ragged += 1
+            n = min(len(ints), len(mzs))
+            mzs, ints = mzs[:n], ints[:n]
+
+        pmz = parse_peak_list(row.get("mz_ms1"))
+        if not pmz:
+            empty += 1
+            continue
+
+        fid = deimos_fid(row.get("index_ms1", pmz[0]))
+        c = comps.setdefault(fid, Compound(fid))
+        c.precursor_mz = float(pmz[0])
+        rt = parse_peak_list(row.get("retention_time_ms1"))
+        if rt:
+            c.rt = float(rt[0])
+        c.ms2["NA"].extend(zip(mzs, ints))
+        total += len(mzs)
+
+    if ragged:
+        log(f"[warn] {ragged} rows had mz/intensity lists of different lengths - truncated to the shorter")
+    if empty:
+        log(f"[warn] {empty} rows had no parsable MS2 peaks - skipped")
+    return total
+
+
 def collect_deimos(ms2_frames: list[pd.DataFrame], ms1_index: MS1Index,
                    comps: dict[str, Compound], args) -> None:
     total = 0
@@ -350,6 +438,17 @@ def collect_deimos(ms2_frames: list[pd.DataFrame], ms1_index: MS1Index,
         log(f"[deimos] ms2 table: {n_raw} rows; dtypes "
             + ", ".join(f"{c}={d[c].dtype}" for c in
                         ("index_ms1", "mz_ms1", "mz_ms2", "intensity_ms2") if c in d.columns))
+
+        # Layout A: the whole fragment spectrum sits in one cell as a list.
+        # This must be checked BEFORE any numeric coercion, which would turn
+        # every "[1.0, 2.0, ...]" string into NaN.
+        if "mz_ms2" in d.columns and looks_like_list_column(d["mz_ms2"]):
+            log("[deimos] list-valued MS2 columns detected -> one row per feature")
+            total += collect_deimos_lists(d, comps, args)
+            continue
+
+        # Layout B: one row per precursor/fragment pair.
+        log("[deimos] scalar MS2 columns -> one row per precursor/fragment pair")
 
         # numeric coercion for the PEAK columns only. The grouping key is left
         # exactly as-is: coercing it would turn non-numeric ids into NaN, and
@@ -712,6 +811,10 @@ def main() -> int:
             ])
 
     log(f"[done] wrote {len(written)} .ms files to {ms_dir} (skipped {skipped})")
+    if len(written) > 300 and not args.max_compounds:
+        log(f"[note] {len(written)} compounds is a lot for a hosted CI runner "
+            "(6 h job limit, 2 CPU). Consider --max-compounds, dropping the "
+            "'structure'/'canopus' steps, or a self-hosted runner.")
     (out / "conversion_report.txt").write_text("\n".join(LOG) + "\n", encoding="utf-8")
     (out / "conversion_summary.json").write_text(
         json.dumps({"n_written": len(written), "n_skipped": skipped,

@@ -70,13 +70,15 @@ def make_deimos(n_feat: int = 6):
             mz=round(float(rng.uniform(150, 600)), 5), intensity=500.0,
             persistence=50.0, mz_weighted=0.0, retention_time_weighted=0.0))
     for k, pm, rt in feat:
-        for j in range(int(rng.integers(6, 14))):
-            ms2_rows.append(dict(index_ms1=k, mz_ms1=round(pm, 5),
-                retention_time_ms1=round(rt, 4), intensity_ms1=1e6, persistence_ms1=1e5,
-                index_ms2=j, mz_ms2=round(float(rng.uniform(50, pm)), 5),
-                retention_time_ms2=round(rt, 4),
-                intensity_ms2=round(float(rng.uniform(1e3, 5e5)), 1),
-                persistence_ms2=1e4, retention_time_error=0.001))
+        n = int(rng.integers(6, 14))
+        mzs = [round(float(rng.uniform(50, pm)), 5) for _ in range(n)]
+        ins = [round(float(rng.uniform(1e3, 5e5)), 1) for _ in range(n)]
+        # real DEIMoS keeps the whole fragment spectrum inside ONE cell,
+        # as the string repr of a python list
+        ms2_rows.append(dict(index_ms1=k, mz_ms1=round(pm, 5),
+            retention_time_ms1=round(rt, 4), intensity_ms1=1e6, persistence_ms1=1e5,
+            index_ms2=k, mz_ms2=str(mzs), retention_time_ms2=round(rt, 4),
+            intensity_ms2=str(ins), persistence_ms2=1e4, retention_time_error=0.001))
     return pd.DataFrame(ms1_rows), pd.DataFrame(ms2_rows)
 
 
