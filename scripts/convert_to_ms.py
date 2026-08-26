@@ -327,27 +327,73 @@ class MS1Index:
         return list(zip(m.tolist(), i.tolist()))
 
 
+def deimos_fid(key) -> str:
+    """Turn any index_ms1 value (int, float, str, bytes) into a tidy id."""
+    if isinstance(key, bytes):
+        key = key.decode(errors="replace")
+    try:
+        f = float(key)
+        if f.is_integer():
+            return f"F{int(f):06d}"
+        return "F" + safe_id(f"{f:.4f}")
+    except (TypeError, ValueError):
+        return "F" + safe_id(key)
+
+
 def collect_deimos(ms2_frames: list[pd.DataFrame], ms1_index: MS1Index,
                    comps: dict[str, Compound], args) -> None:
     total = 0
     for df in ms2_frames:
         d = df.copy()
         d.columns = [str(c).strip().lower() for c in d.columns]
-        for col in ("mz_ms1", "mz_ms2", "intensity_ms2", "retention_time_ms1", "index_ms1"):
-            if col in d.columns:
-                d[col] = to_float(d[col])
-        d = d.dropna(subset=["mz_ms1", "mz_ms2"])
-        if "intensity_ms2" in d.columns:
-            d = d[d["intensity_ms2"].fillna(0) >= args.min_intensity]
-        if "index_ms1" not in d.columns:
-            d["index_ms1"] = d["mz_ms1"].round(4)
-            log("[deimos] no index_ms1 column -> grouping fragments by precursor m/z")
+        n_raw = len(d)
+        log(f"[deimos] ms2 table: {n_raw} rows; dtypes "
+            + ", ".join(f"{c}={d[c].dtype}" for c in
+                        ("index_ms1", "mz_ms1", "mz_ms2", "intensity_ms2") if c in d.columns))
 
-        for key, grp in d.groupby("index_ms1"):
-            try:
-                fid = f"F{int(float(key)):06d}"
-            except (TypeError, ValueError):
-                fid = safe_id(key)
+        # numeric coercion for the PEAK columns only. The grouping key is left
+        # exactly as-is: coercing it would turn non-numeric ids into NaN, and
+        # pandas' groupby silently drops NaN keys - losing every row without
+        # raising anything.
+        for col in ("mz_ms1", "mz_ms2", "intensity_ms2", "retention_time_ms1"):
+            if col in d.columns:
+                before = d[col].notna().sum()
+                d[col] = to_float(d[col])
+                after = d[col].notna().sum()
+                if after < before:
+                    sample = df[col].dropna().head(3).tolist() if col in df.columns else []
+                    log(f"[warn] '{col}': {before - after} values were not numeric "
+                        f"(sample of raw values: {sample})")
+
+        d = d.dropna(subset=[c for c in ("mz_ms1", "mz_ms2") if c in d.columns])
+        log(f"[deimos] {len(d)}/{n_raw} rows have a usable precursor and fragment m/z")
+        if "intensity_ms2" in d.columns and args.min_intensity > 0:
+            d = d[d["intensity_ms2"].fillna(0) >= args.min_intensity]
+            log(f"[deimos] {len(d)} rows above --min-intensity {args.min_intensity}")
+        if d.empty:
+            log("[warn] no usable MS2 rows in this table")
+            continue
+
+        if "index_ms1" in d.columns:
+            key_col = d["index_ms1"]
+            if key_col.isna().all():
+                log("[warn] index_ms1 is entirely empty -> grouping by precursor m/z instead")
+                key = d["mz_ms1"].round(4).astype(str)
+            else:
+                # normalise to string so ints, floats, bytes and strings all work
+                key = key_col.map(lambda v: v.decode() if isinstance(v, bytes) else v)
+                key = key.astype(str).str.strip()
+                key = key.mask(key.isin(["", "nan", "None", "<NA>"]),
+                               d["mz_ms1"].round(4).astype(str))
+        else:
+            log("[deimos] no index_ms1 column -> grouping fragments by precursor m/z")
+            key = d["mz_ms1"].round(4).astype(str)
+
+        groups = d.groupby(key, dropna=False)
+        log(f"[deimos] {groups.ngroups} distinct precursor groups")
+
+        for raw_key, grp in groups:
+            fid = deimos_fid(raw_key)
             c = comps.setdefault(fid, Compound(fid))
             c.precursor_mz = float(grp["mz_ms1"].iloc[0])
             if "retention_time_ms1" in grp.columns:
@@ -360,6 +406,10 @@ def collect_deimos(ms2_frames: list[pd.DataFrame], ms1_index: MS1Index,
             total += len(grp)
 
     log(f"[deimos] {len(comps)} features from {total} precursor/fragment pairs")
+    if not comps:
+        log("[error] no features were built - check the [deimos] row counts above "
+            "to see which stage dropped them")
+        return
 
     # recover each feature's isotope pattern from the flat MS1 peak list
     n_iso = 0
