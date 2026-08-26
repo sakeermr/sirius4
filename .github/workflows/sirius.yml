@@ -32,6 +32,15 @@ on:
       max_compounds:
         description: "Limit number of compounds (0 = all)"
         default: "0"
+      release_tag:
+        description: "Release tag holding the data asset (used if data/ has no zip)"
+        default: "data"
+      iso_rt_tol:
+        description: "DEIMoS: retention-time tolerance for isotope lookup"
+        default: "0.05"
+      prefer_format:
+        description: "Use h5 or csv when a table exists as both"
+        default: "h5"
 
 concurrency:
   group: sirius-${{ github.ref }}
@@ -57,17 +66,29 @@ jobs:
       - name: Pick input zip
         id: pick
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           ZIP="${{ github.event.inputs.input_zip }}"
           if [ -z "$ZIP" ] || [ ! -f "$ZIP" ]; then
             ZIP=$(ls -S data/*.zip 2>/dev/null | head -n1 || true)
           fi
+          # files >100 MB cannot live in a git repo - fall back to a Release asset
           if [ -z "$ZIP" ]; then
-            echo "::error::No zip found. Put your archive in data/ or pass input_zip."
+            TAG="${{ github.event.inputs.release_tag || 'data' }}"
+            echo "No zip in the repo, trying release '$TAG'..."
+            mkdir -p data
+            if gh release download "$TAG" --dir data --clobber 2>/dev/null; then
+              ZIP=$(ls -S data/*.zip 2>/dev/null | head -n1 || true)
+              echo "Downloaded $ZIP from release $TAG"
+            fi
+          fi
+          if [ -z "$ZIP" ]; then
+            echo "::error::No zip found. Commit one to data/, or upload it as an asset on a release tagged 'data'."
             exit 1
           fi
+          ls -lh "$ZIP"
           echo "zip=$ZIP" >> "$GITHUB_OUTPUT"
-          echo "Using $ZIP"
 
       - name: Convert to SIRIUS .ms
         id: convert
@@ -79,11 +100,18 @@ jobs:
             --adduct "${{ github.event.inputs.adduct || '[M+H]+' }}" \
             --polarity "${{ github.event.inputs.polarity || 'positive' }}" \
             --instrument "${{ github.event.inputs.instrument || 'orbitrap' }}" \
-            --max-compounds "${{ github.event.inputs.max_compounds || '0' }}"
+            --max-compounds "${{ github.event.inputs.max_compounds || '0' }}" \
+            --prefer-format "${{ github.event.inputs.prefer_format || 'h5' }}" \
+            --iso-rt-tol "${{ github.event.inputs.iso_rt_tol || '0.05' }}" \
+            --require-ms2
           N=$(ls work/ms_files/*.ms | wc -l)
           echo "n_written=$N" >> "$GITHUB_OUTPUT"
           echo "### Converted $N compounds to .ms" >> "$GITHUB_STEP_SUMMARY"
           head -n 25 work/ms_files/$(ls work/ms_files | head -n1) >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Show conversion report
+        if: always()
+        run: cat work/conversion_report.txt || true
 
       - name: Upload .ms files
         uses: actions/upload-artifact@v4

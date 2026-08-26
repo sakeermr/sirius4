@@ -99,6 +99,46 @@ make sirius                          # needs Docker
 
 ---
 
+## DEIMoS input
+
+DEIMoS (`pnnl/deimos`) writes `ms2_extracted` tables where each row is one
+**precursor/fragment pair**, not a plain peak list:
+
+| index_ms1 | mz_ms1 | retention_time_ms1 | index_ms2 | mz_ms2 | intensity_ms2 | ... |
+|---|---|---|---|---|---|---|
+
+`index_ms1` is the feature id, `mz_ms1` the precursor, `mz_ms2` the fragment.
+The `ms1_peaks` table has **no** feature id - it is a flat peak list - so the
+isotope pattern of each feature is recovered by searching that list in a window
+around the precursor (`-0.5` to `+4.5` Da, and +/- `--iso-rt-tol` in retention time).
+
+This layout is detected automatically. Two knobs matter:
+
+* `--iso-rt-tol` - **in the same unit as your `retention_time` column.** DEIMoS
+  usually writes minutes, so `0.05` is 3 s. If your column is in seconds, use
+  something like `3`. Too wide pulls in co-eluting noise; too narrow leaves the
+  MS1 block empty. Check `conversion_report.txt`: it reports how many features
+  got isotope peaks attached.
+* `--prefer-format` - DEIMoS exports every table as **both** `.csv` and `.h5`.
+  The converter keeps only one (default `h5`) so the data isn't loaded twice.
+
+Files named `*_ms1_raw*`, `*_ms2_raw*` and `*_ms2_peaks*` are ignored - only
+`ms1_peaks` and `ms2_extracted` are read.
+
+## Inputs larger than 100 MB
+
+GitHub rejects any file over 100 MB, so a big archive cannot be committed.
+Upload it as a **release asset** instead - the workflow falls back to that
+automatically when `data/` has no zip:
+
+```bash
+gh release create data --title "input data" --notes "SIRIUS input"
+gh release upload data "path/to/deimos-results.zip"
+```
+
+Then run the workflow normally; it downloads the asset at the start of the job.
+Assets can be up to 2 GB.
+
 ## Input format
 
 The converter is deliberately forgiving. It finds any file whose name contains

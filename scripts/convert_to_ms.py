@@ -104,6 +104,25 @@ def unzip(zip_path: Path, dest: Path) -> Path:
     return dest
 
 
+def prefer_format(paths: list[Path], prefer: str) -> list[Path]:
+    """DEIMoS exports the same table as .csv AND .h5 - keep only one of each."""
+    by_stem: dict[str, list[Path]] = defaultdict(list)
+    for p in paths:
+        by_stem[p.stem.lower()].append(p)
+    out: list[Path] = []
+    for stem, group in by_stem.items():
+        if len(group) == 1:
+            out.append(group[0])
+            continue
+        wanted = [p for p in group if p.suffix.lower().lstrip(".") in
+                  ({"h5", "hdf5", "hdf"} if prefer == "h5" else {"csv", "tsv", "txt"})]
+        pick = (wanted or group)[0]
+        dropped = [p.name for p in group if p != pick]
+        log(f"[scan] '{stem}' exists in several formats -> using {pick.name}, ignoring {dropped}")
+        out.append(pick)
+    return sorted(out)
+
+
 def find_tables(root: Path, patterns: list[str]) -> list[Path]:
     """Find data files anywhere under root matching any of the glob patterns."""
     hits: list[Path] = []
@@ -248,6 +267,112 @@ def canonicalise(df: pd.DataFrame, extra_aliases: dict | None = None) -> pd.Data
 
 def to_float(s: pd.Series) -> pd.Series:
     return pd.to_numeric(s, errors="coerce")
+
+
+# --------------------------------------------------------------------------
+# DEIMoS support
+#
+# DEIMoS (github.com/pnnl/deimos) writes ms2_extracted tables where every row
+# is one precursor/fragment PAIR:
+#
+#   index_ms1  mz_ms1  retention_time_ms1  intensity_ms1  persistence_ms1
+#   index_ms2  mz_ms2  retention_time_ms2  intensity_ms2  persistence_ms2
+#   retention_time_error
+#
+# so `index_ms1` is the feature id, `mz_ms1` the precursor and `mz_ms2` the
+# fragment. The ms1_peaks table has no feature id at all - it is a flat peak
+# list - so the isotope pattern for a feature is recovered by searching that
+# list in an m/z + retention-time window around the precursor.
+# --------------------------------------------------------------------------
+def is_deimos_ms2(df: pd.DataFrame) -> bool:
+    cols = {str(c).strip().lower() for c in df.columns}
+    return {"mz_ms1", "mz_ms2"}.issubset(cols)
+
+
+class MS1Index:
+    """m/z-sorted view of a flat MS1 peak list, for fast window queries."""
+
+    def __init__(self, frames: list[pd.DataFrame]):
+        mz, rt, it = [], [], []
+        for df in frames:
+            d = canonicalise(df)
+            if "mz" not in d.columns:
+                continue
+            n = len(d)
+            mz.append(to_float(d["mz"]).to_numpy(dtype=float))
+            rt.append(to_float(d["rt"]).to_numpy(dtype=float) if "rt" in d.columns else np.full(n, np.nan))
+            it.append(to_float(d["intensity"]).to_numpy(dtype=float) if "intensity" in d.columns else np.ones(n))
+        if not mz:
+            self.mz = np.array([]); self.rt = np.array([]); self.it = np.array([])
+            return
+        self.mz = np.concatenate(mz); self.rt = np.concatenate(rt); self.it = np.concatenate(it)
+        good = np.isfinite(self.mz)
+        self.mz, self.rt, self.it = self.mz[good], self.rt[good], self.it[good]
+        order = np.argsort(self.mz, kind="stable")
+        self.mz, self.rt, self.it = self.mz[order], self.rt[order], self.it[order]
+        log(f"[ms1] indexed {len(self.mz)} MS1 peaks for isotope-window lookup")
+
+    def isotopes(self, pmz: float, rt: float | None, mz_lo: float, mz_hi: float,
+                 rt_tol: float) -> list[tuple[float, float]]:
+        if len(self.mz) == 0 or not np.isfinite(pmz):
+            return []
+        lo = int(np.searchsorted(self.mz, pmz - mz_lo, side="left"))
+        hi = int(np.searchsorted(self.mz, pmz + mz_hi, side="right"))
+        if hi <= lo:
+            return []
+        m, r, i = self.mz[lo:hi], self.rt[lo:hi], self.it[lo:hi]
+        if rt is not None and np.isfinite(rt) and rt_tol > 0:
+            keep = ~np.isfinite(r) | (np.abs(r - rt) <= rt_tol)
+            m, i = m[keep], i[keep]
+        return list(zip(m.tolist(), i.tolist()))
+
+
+def collect_deimos(ms2_frames: list[pd.DataFrame], ms1_index: MS1Index,
+                   comps: dict[str, Compound], args) -> None:
+    total = 0
+    for df in ms2_frames:
+        d = df.copy()
+        d.columns = [str(c).strip().lower() for c in d.columns]
+        for col in ("mz_ms1", "mz_ms2", "intensity_ms2", "retention_time_ms1", "index_ms1"):
+            if col in d.columns:
+                d[col] = to_float(d[col])
+        d = d.dropna(subset=["mz_ms1", "mz_ms2"])
+        if "intensity_ms2" in d.columns:
+            d = d[d["intensity_ms2"].fillna(0) >= args.min_intensity]
+        if "index_ms1" not in d.columns:
+            d["index_ms1"] = d["mz_ms1"].round(4)
+            log("[deimos] no index_ms1 column -> grouping fragments by precursor m/z")
+
+        for key, grp in d.groupby("index_ms1"):
+            try:
+                fid = f"F{int(float(key)):06d}"
+            except (TypeError, ValueError):
+                fid = safe_id(key)
+            c = comps.setdefault(fid, Compound(fid))
+            c.precursor_mz = float(grp["mz_ms1"].iloc[0])
+            if "retention_time_ms1" in grp.columns:
+                v = to_float(grp["retention_time_ms1"]).dropna()
+                if len(v):
+                    c.rt = float(v.iloc[0])
+            inten = (to_float(grp["intensity_ms2"]).fillna(1.0)
+                     if "intensity_ms2" in grp.columns else pd.Series(1.0, index=grp.index))
+            c.ms2["NA"].extend(zip(grp["mz_ms2"].astype(float), inten.astype(float)))
+            total += len(grp)
+
+    log(f"[deimos] {len(comps)} features from {total} precursor/fragment pairs")
+
+    # recover each feature's isotope pattern from the flat MS1 peak list
+    n_iso = 0
+    for c in comps.values():
+        peaks = ms1_index.isotopes(
+            c.precursor_mz or 0.0, c.rt,
+            args.iso_mz_low, args.iso_mz_high, args.iso_rt_tol,
+        )
+        if peaks:
+            c.ms1.extend(peaks)
+            n_iso += 1
+    log(f"[deimos] attached MS1 isotope peaks to {n_iso}/{len(comps)} features "
+        f"(window -{args.iso_mz_low}/+{args.iso_mz_high} Da, rt +/-{args.iso_rt_tol})")
 
 
 # --------------------------------------------------------------------------
@@ -440,6 +565,17 @@ def main() -> int:
     ap.add_argument("--min-ms2-peaks", type=int, default=1, help="skip compounds with fewer MS2 peaks")
     ap.add_argument("--require-ms2", action="store_true", help="only write compounds that have MS2")
     ap.add_argument("--max-compounds", type=int, default=0, help="0 = no limit (useful for smoke tests)")
+    ap.add_argument("--format", choices=["auto", "deimos", "generic"], default="auto",
+                    help="table layout; auto-detects the DEIMoS paired-column style")
+    ap.add_argument("--prefer-format", choices=["h5", "csv"], default="h5",
+                    help="which file to use when a table exists as both .csv and .h5")
+    ap.add_argument("--iso-rt-tol", type=float, default=0.05,
+                    help="DEIMoS: retention-time tolerance for isotope lookup, in the "
+                         "same unit as your retention_time column")
+    ap.add_argument("--iso-mz-low", type=float, default=0.5,
+                    help="DEIMoS: Da below the precursor to include in the MS1 window")
+    ap.add_argument("--iso-mz-high", type=float, default=4.5,
+                    help="DEIMoS: Da above the precursor to include (isotope envelope)")
     args = ap.parse_args()
 
     out = args.out
@@ -461,6 +597,8 @@ def main() -> int:
     ms2_files = find_tables(root, MS2_PATTERNS)
     ms2_files = [p for p in ms2_files if p not in set(ms1_files)]
     ms1_files = [p for p in ms1_files if "ms2" not in p.name.lower()]
+    ms1_files = prefer_format(ms1_files, args.prefer_format)
+    ms2_files = prefer_format(ms2_files, args.prefer_format)
 
     log(f"[scan] MS1 files ({len(ms1_files)}): {[p.name for p in ms1_files]}")
     log(f"[scan] MS2 files ({len(ms2_files)}): {[p.name for p in ms2_files]}")
@@ -468,17 +606,35 @@ def main() -> int:
         log("[error] no ms1_peaks / ms2_extracted tables found in the archive")
         return 3
 
-    comps: dict[str, Compound] = {}
+    ms1_frames: list[pd.DataFrame] = []
+    ms2_frames: list[pd.DataFrame] = []
     for p in ms1_files:
         try:
-            collect_ms1(load_any(p), comps, args.min_intensity)
+            ms1_frames.extend(load_any(p))
         except Exception as exc:
             log(f"[warn] failed to read {p}: {type(exc).__name__}: {exc}")
     for p in ms2_files:
         try:
-            collect_ms2(load_any(p), comps, args.min_intensity)
+            ms2_frames.extend(load_any(p))
         except Exception as exc:
             log(f"[warn] failed to read {p}: {type(exc).__name__}: {exc}")
+
+    for f in ms1_frames + ms2_frames:
+        log(f"[cols] {list(f.columns)[:14]}")
+
+    comps: dict[str, Compound] = {}
+    deimos = args.format == "deimos" or (
+        args.format == "auto" and any(is_deimos_ms2(f) for f in ms2_frames)
+    )
+
+    if deimos:
+        log("[mode] DEIMoS paired-column layout detected "
+            "(index_ms1 / mz_ms1 / mz_ms2) - using the DEIMoS adapter")
+        collect_deimos(ms2_frames, MS1Index(ms1_frames), comps, args)
+    else:
+        log("[mode] generic long-format layout")
+        collect_ms1(ms1_frames, comps, args.min_intensity)
+        collect_ms2(ms2_frames, comps, args.min_intensity)
 
     log(f"[build] {len(comps)} candidate features")
 

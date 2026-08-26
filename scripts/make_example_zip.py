@@ -19,7 +19,8 @@ import numpy as np
 import pandas as pd
 
 rng = np.random.default_rng(7)
-OUT = Path(sys.argv[1] if len(sys.argv) > 1 else "examples/example_input.zip")
+OUT = Path(sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith("-")
+           else "examples/example_input.zip")
 
 
 def make(prefix: str, n_feat: int, start: int):
@@ -52,6 +53,50 @@ def make(prefix: str, n_feat: int, start: int):
     return pd.DataFrame(ms1_rows), pd.DataFrame(ms2_rows)
 
 
+def make_deimos(n_feat: int = 6):
+    """Synthetic tables in the DEIMoS paired-column layout."""
+    ms1_rows, ms2_rows, feat = [], [], []
+    for k in range(n_feat):
+        pm = float(rng.uniform(150, 600)); rt = float(rng.uniform(1, 20))
+        feat.append((k, pm, rt))
+        for iso in range(3):
+            ms1_rows.append(dict(controllerType=0, controllerNumber=1, scan=1000 + k,
+                retention_time=round(rt, 4), mz=round(pm + iso * 1.00336, 5),
+                intensity=round(1e6 * 0.6 ** iso, 1), persistence=round(1e5 * 0.6 ** iso, 1),
+                mz_weighted=round(pm + iso * 1.00336, 5), retention_time_weighted=round(rt, 4)))
+    for _ in range(400):  # background peaks that must not leak into a feature
+        ms1_rows.append(dict(controllerType=0, controllerNumber=1, scan=9999,
+            retention_time=round(float(rng.uniform(1, 20)), 4),
+            mz=round(float(rng.uniform(150, 600)), 5), intensity=500.0,
+            persistence=50.0, mz_weighted=0.0, retention_time_weighted=0.0))
+    for k, pm, rt in feat:
+        for j in range(int(rng.integers(6, 14))):
+            ms2_rows.append(dict(index_ms1=k, mz_ms1=round(pm, 5),
+                retention_time_ms1=round(rt, 4), intensity_ms1=1e6, persistence_ms1=1e5,
+                index_ms2=j, mz_ms2=round(float(rng.uniform(50, pm)), 5),
+                retention_time_ms2=round(rt, 4),
+                intensity_ms2=round(float(rng.uniform(1e3, 5e5)), 1),
+                persistence_ms2=1e4, retention_time_error=0.001))
+    return pd.DataFrame(ms1_rows), pd.DataFrame(ms2_rows)
+
+
+def main_deimos() -> None:
+    tmp = OUT.parent / "_tmp_deimos"; tmp.mkdir(parents=True, exist_ok=True)
+    stem = "20260401_SAMPLE_01"
+    m1, m2 = make_deimos()
+    m1.to_csv(tmp / f"{stem}_ms1_peaks.csv", index=False)
+    m2.to_csv(tmp / f"{stem}_ms2_extracted.csv", index=False)
+    m1.head(5).to_csv(tmp / f"{stem}_ms1_raw.csv", index=False)     # must be ignored
+    m2.head(5).to_csv(tmp / f"{stem}_ms2_peaks.csv", index=False)   # must be ignored
+    with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as zf:
+        for p in sorted(tmp.iterdir()):
+            zf.write(p, arcname=p.name)
+    for p in tmp.iterdir():
+        p.unlink()
+    tmp.rmdir()
+    print(f"wrote {OUT} (DEIMoS layout)")
+
+
 def main() -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     tmp = OUT.parent / "_tmp_example"
@@ -75,4 +120,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    if "--deimos" in sys.argv:
+        main_deimos()
+    else:
+        main()

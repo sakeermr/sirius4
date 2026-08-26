@@ -41,7 +41,27 @@ jobs:
           echo '--- sample ---'
           cat "$(ls work/ms_files/*.ms | head -n1)"
 
+      - name: Build synthetic DEIMoS-format input
+        run: python scripts/make_example_zip.py examples/deimos_input.zip --deimos
+
+      - name: Convert DEIMoS layout
+        run: |
+          python scripts/convert_to_ms.py --zip examples/deimos_input.zip \
+            --out work_deimos --iso-rt-tol 0.01 --require-ms2
+          cat work_deimos/conversion_report.txt
+
+      - name: Check DEIMoS output
+        run: |
+          N=$(ls work_deimos/ms_files/*.ms | wc -l)
+          echo "DEIMoS: produced $N .ms files (expected 6)"
+          test "$N" -eq 6
+          grep -c "^>ms1peaks" work_deimos/ms_files/*.ms > /dev/null
+          echo '--- sample ---'
+          cat "$(ls work_deimos/ms_files/*.ms | head -n1)"
+
       - uses: actions/upload-artifact@v4
         with:
           name: smoke-ms-files
-          path: work/**
+          path: |
+            work/**
+            work_deimos/**
