@@ -56,6 +56,22 @@ jobs:
           echo "DEIMoS: produced $N .ms files (expected 6)"
           test "$N" -eq 6
           grep -c "^>ms1peaks" work_deimos/ms_files/*.ms > /dev/null
+          # every feature must get a REAL isotope envelope, not a noise cloud
+          grep -q "with 2\+ isotope peaks" work_deimos/conversion_report.txt
+          python - <<'PY'
+          import glob, sys
+          bad = 0
+          for f in glob.glob("work_deimos/ms_files/*.ms"):
+              blk, mzs = False, []
+              for line in open(f):
+                  if line.startswith(">ms1peaks"): blk = True; continue
+                  if line.startswith(">"): blk = False; continue
+                  if blk and line.strip(): mzs.append(float(line.split()[0]))
+              gaps = [round(b - a, 3) for a, b in zip(mzs, mzs[1:])]
+              if any(abs(g - 1.003) > 0.02 for g in gaps):
+                  print("BAD isotope spacing in", f, gaps); bad += 1
+          sys.exit(1 if bad else 0)
+          PY
           echo '--- sample ---'
           cat "$(ls work_deimos/ms_files/*.ms | head -n1)"
 

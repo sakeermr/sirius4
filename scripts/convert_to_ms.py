@@ -80,6 +80,8 @@ MS1_PATTERNS = ["*ms1_peak*", "*ms1peak*", "*ms1*"]
 MS2_PATTERNS = ["*ms2_extract*", "*ms2extract*", "*ms2*"]
 TABLE_EXT = {".csv", ".tsv", ".txt", ".h5", ".hdf5", ".hdf", ".he5"}
 
+NEUTRON = 1.0033548  # 13C - 12C mass difference
+
 LOG: list[str] = []
 
 
@@ -312,19 +314,36 @@ class MS1Index:
         self.mz, self.rt, self.it = self.mz[order], self.rt[order], self.it[order]
         log(f"[ms1] indexed {len(self.mz)} MS1 peaks for isotope-window lookup")
 
-    def isotopes(self, pmz: float, rt: float | None, mz_lo: float, mz_hi: float,
+    def isotopes(self, pmz: float, rt: float | None, n_iso: int, ppm: float,
                  rt_tol: float) -> list[tuple[float, float]]:
+        """
+        Pick the isotope envelope for a precursor: for each expected position
+        M, M+1.00335, M+2.00670 ... take the most intense MS1 peak within
+        `ppm` of that exact mass and within `rt_tol` of the feature's rt.
+
+        A plain +/- window is useless here - in a 1.3M-peak list it scoops up
+        every co-eluting ion near the precursor and hands SIRIUS a spectrum
+        that looks nothing like an isotope pattern.
+        """
         if len(self.mz) == 0 or not np.isfinite(pmz):
             return []
-        lo = int(np.searchsorted(self.mz, pmz - mz_lo, side="left"))
-        hi = int(np.searchsorted(self.mz, pmz + mz_hi, side="right"))
-        if hi <= lo:
-            return []
-        m, r, i = self.mz[lo:hi], self.rt[lo:hi], self.it[lo:hi]
-        if rt is not None and np.isfinite(rt) and rt_tol > 0:
-            keep = ~np.isfinite(r) | (np.abs(r - rt) <= rt_tol)
-            m, i = m[keep], i[keep]
-        return list(zip(m.tolist(), i.tolist()))
+        out: list[tuple[float, float]] = []
+        for k in range(max(1, n_iso)):
+            target = pmz + k * NEUTRON
+            tol = target * ppm * 1e-6
+            lo = int(np.searchsorted(self.mz, target - tol, side="left"))
+            hi = int(np.searchsorted(self.mz, target + tol, side="right"))
+            if hi <= lo:
+                continue
+            m, r, i = self.mz[lo:hi], self.rt[lo:hi], self.it[lo:hi]
+            if rt is not None and np.isfinite(rt) and rt_tol > 0:
+                keep = ~np.isfinite(r) | (np.abs(r - rt) <= rt_tol)
+                m, i = m[keep], i[keep]
+            if not len(m):
+                continue
+            best = int(np.argmax(i))
+            out.append((float(m[best]), float(i[best])))
+        return out
 
 
 def deimos_fid(key) -> str:
@@ -418,6 +437,9 @@ def collect_deimos_lists(d: pd.DataFrame, comps: dict[str, Compound], args) -> i
         rt = parse_peak_list(row.get("retention_time_ms1"))
         if rt:
             c.rt = float(rt[0])
+        pint = parse_peak_list(row.get("intensity_ms1"))
+        if pint:
+            c.precursor_intensity = float(pint[0])
         c.ms2["NA"].extend(zip(mzs, ints))
         total += len(mzs)
 
@@ -499,6 +521,10 @@ def collect_deimos(ms2_frames: list[pd.DataFrame], ms1_index: MS1Index,
                 v = to_float(grp["retention_time_ms1"]).dropna()
                 if len(v):
                     c.rt = float(v.iloc[0])
+            if "intensity_ms1" in grp.columns:
+                v = to_float(grp["intensity_ms1"]).dropna()
+                if len(v):
+                    c.precursor_intensity = float(v.iloc[0])
             inten = (to_float(grp["intensity_ms2"]).fillna(1.0)
                      if "intensity_ms2" in grp.columns else pd.Series(1.0, index=grp.index))
             c.ms2["NA"].extend(zip(grp["mz_ms2"].astype(float), inten.astype(float)))
@@ -511,17 +537,27 @@ def collect_deimos(ms2_frames: list[pd.DataFrame], ms1_index: MS1Index,
         return
 
     # recover each feature's isotope pattern from the flat MS1 peak list
-    n_iso = 0
+    n_iso, n_multi, n_fallback = 0, 0, 0
     for c in comps.values():
         peaks = ms1_index.isotopes(
-            c.precursor_mz or 0.0, c.rt,
-            args.iso_mz_low, args.iso_mz_high, args.iso_rt_tol,
+            c.precursor_mz or 0.0, c.rt, args.n_isotopes, args.iso_ppm, args.iso_rt_tol,
         )
         if peaks:
             c.ms1.extend(peaks)
             n_iso += 1
-    log(f"[deimos] attached MS1 isotope peaks to {n_iso}/{len(comps)} features "
-        f"(window -{args.iso_mz_low}/+{args.iso_mz_high} Da, rt +/-{args.iso_rt_tol})")
+            if len(peaks) > 1:
+                n_multi += 1
+        elif c.precursor_mz:
+            # no MS1 match - fall back to the precursor itself so SIRIUS at
+            # least sees the parent ion
+            c.ms1.append((float(c.precursor_mz), float(c.precursor_intensity or 1.0)))
+            n_fallback += 1
+    log(f"[deimos] MS1 isotopes: {n_iso}/{len(comps)} features matched "
+        f"({n_multi} with 2+ isotope peaks), {n_fallback} fell back to the bare precursor "
+        f"[+/-{args.iso_ppm} ppm, rt +/-{args.iso_rt_tol}, up to {args.n_isotopes} isotopes]")
+    if n_multi == 0 and len(comps):
+        log("[warn] no feature got a real isotope pattern - check that --iso-rt-tol "
+            "matches the unit of your retention_time column, and widen --iso-ppm")
 
 
 # --------------------------------------------------------------------------
@@ -538,6 +574,7 @@ class Compound:
         self.adduct: str | None = None
         self.formula: str | None = None
         self.name: str | None = None
+        self.precursor_intensity: float | None = None
 
     def parent_mass(self) -> float | None:
         if self.precursor_mz and self.precursor_mz > 0:
@@ -721,10 +758,10 @@ def main() -> int:
     ap.add_argument("--iso-rt-tol", type=float, default=0.05,
                     help="DEIMoS: retention-time tolerance for isotope lookup, in the "
                          "same unit as your retention_time column")
-    ap.add_argument("--iso-mz-low", type=float, default=0.5,
-                    help="DEIMoS: Da below the precursor to include in the MS1 window")
-    ap.add_argument("--iso-mz-high", type=float, default=4.5,
-                    help="DEIMoS: Da above the precursor to include (isotope envelope)")
+    ap.add_argument("--iso-ppm", type=float, default=20.0,
+                    help="DEIMoS: mass tolerance when matching each isotope position")
+    ap.add_argument("--n-isotopes", type=int, default=4,
+                    help="DEIMoS: how many isotope peaks to look for (M, M+1, ...)")
     args = ap.parse_args()
 
     out = args.out

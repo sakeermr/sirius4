@@ -121,6 +121,11 @@ DEIMoS writes `ms2_extracted` in one of two shapes, both handled automatically:
 
 Two knobs matter:
 
+* `--iso-ppm` / `--n-isotopes` - the MS1 envelope is built by matching each
+  expected isotope position (M, M+1.00335, M+2.0067 ...) within this ppm
+  tolerance and taking the most intense peak. A plain m/z window does not work
+  on a million-peak list: it scoops up every co-eluting ion near the precursor
+  and hands SIRIUS something that is not an isotope pattern at all.
 * `--iso-rt-tol` - **in the same unit as your `retention_time` column.** DEIMoS
   usually writes minutes, so `0.05` is 3 s. If your column is in seconds, use
   something like `3`. Too wide pulls in co-eluting noise; too narrow leaves the

@@ -36,8 +36,11 @@ on:
         description: "Release tag holding the data asset (used if data/ has no zip)"
         default: "data"
       iso_rt_tol:
-        description: "DEIMoS: retention-time tolerance for isotope lookup"
+        description: "DEIMoS: retention-time tolerance for isotope lookup (same unit as your retention_time column)"
         default: "0.05"
+      iso_ppm:
+        description: "DEIMoS: mass tolerance for matching isotope peaks"
+        default: "20"
       prefer_format:
         description: "Use h5 or csv when a table exists as both"
         default: "h5"
@@ -103,6 +106,7 @@ jobs:
             --max-compounds "${{ github.event.inputs.max_compounds || '0' }}" \
             --prefer-format "${{ github.event.inputs.prefer_format || 'h5' }}" \
             --iso-rt-tol "${{ github.event.inputs.iso_rt_tol || '0.05' }}" \
+            --iso-ppm "${{ github.event.inputs.iso_ppm || '20' }}" \
             --require-ms2
           N=$(ls work/ms_files/*.ms | wc -l)
           echo "n_written=$N" >> "$GITHUB_OUTPUT"
