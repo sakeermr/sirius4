@@ -33,9 +33,7 @@ jobs:
 
       - name: Check output
         run: |
-          N=$(ls work/ms_files/*.ms | wc -l)
-          echo "produced $N .ms files (expected 7: 4 from CSV + 3 from HDF5)"
-          test "$N" -ge 7
+          python scripts/check_ms_files.py work/ms_files --min 7
           grep -q ">parentmass" work/ms_files/*.ms
           grep -q ">collision" work/ms_files/*.ms
           echo '--- sample ---'
@@ -52,28 +50,7 @@ jobs:
 
       - name: Check DEIMoS output
         run: |
-          N=$(ls work_deimos/ms_files/*.ms | wc -l)
-          echo "DEIMoS: produced $N .ms files (expected 6)"
-          test "$N" -eq 6
-          grep -c "^>ms1peaks" work_deimos/ms_files/*.ms > /dev/null
-          # every feature must get a REAL isotope envelope, not a noise cloud
-          grep -q "with 2\+ isotope peaks" work_deimos/conversion_report.txt
-          python - <<'PY'
-          import glob, sys
-          bad = 0
-          for f in glob.glob("work_deimos/ms_files/*.ms"):
-              blk, mzs = False, []
-              for line in open(f):
-                  if line.startswith(">ms1peaks"): blk = True; continue
-                  if line.startswith(">"): blk = False; continue
-                  if blk and line.strip(): mzs.append(float(line.split()[0]))
-              gaps = [round(b - a, 3) for a, b in zip(mzs, mzs[1:])]
-              if any(abs(g - 1.003) > 0.02 for g in gaps):
-                  print("BAD isotope spacing in", f, gaps); bad += 1
-          sys.exit(1 if bad else 0)
-          PY
-          echo '--- sample ---'
-          cat "$(ls work_deimos/ms_files/*.ms | head -n1)"
+          python scripts/check_ms_files.py work_deimos/ms_files --min 6 --require-isotopes
 
       - uses: actions/upload-artifact@v4
         with:
